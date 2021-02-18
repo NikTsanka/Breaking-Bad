@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Breaking Bad</string>
+    <string name="button_text">Login</string>
+    <string name="hello_world">Hello world</string>
+    <string name="login_screen_username">USERNAME</string>
+    <string name="login_screen_password">PASSWORD</string>
+    <string name="login_screen_don_t_have_an_account">Don’t have an account?</string>
+    <string name="login_screen_register">REGISTER</string>
+</resources>
