@@ -2,9 +2,13 @@
 <resources>
     <string name="app_name">"Breaking Bad"</string>
     <string name="button_text">ღილაკი</string>
-    <string name="hello_world">Hello world</string>
-    <string name="login_screen_username">USERNAME</string>
-    <string name="login_screen_password">PASSWORD</string>
-    <string name="login_screen_don_t_have_an_account">Don’t have an account?</string>
-    <string name="login_screen_register">REGISTER</string>
+    <string name="login_screen_username">სახელი</string>
+    <string name="login_screen_password">პაროლი</string>
+    <string name="login_screen_don_t_have_an_account">არ ხართ დარეგისტრირებული?</string>
+    <string name="login_screen_register">რეგისტრაცია</string>
+    <string name="confirm_password_input_title">დაამოწმე პაროლი</string>
+    <string name="email_input_text_title">მეილი</string>
+    <string name="back_button_text">უკან</string>
+    <string name="register_button">რეგისტრაცია</string>
+    <string name="forgot_password_title">დაგავიწყდა პაროლი?</string>
 </resources>
