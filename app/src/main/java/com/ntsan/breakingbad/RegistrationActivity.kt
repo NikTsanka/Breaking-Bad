@@ -9,6 +9,8 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registration_activity)
+        window.setBackgroundDrawable(null)
+        supportActionBar?.hide()
 
         val goToLoginActivity = findViewById<TextView>(R.id.backButtonTextView )
         goToLoginActivity.setOnClickListener {

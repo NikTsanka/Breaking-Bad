@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gdStart"
@@ -108,16 +112,18 @@
         app:layout_constraintStart_toStartOf="@+id/gdStart"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputEditText" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/registrationTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_screen_don_t_have_an_account"
-        android:textAppearance="@style/RegistrationTextTitleBottom"
-        app:layout_constraintBottom_toTopOf="@+id/gdBottom"
-        app:layout_constraintEnd_toStartOf="@+id/gdEnd"
-        app:layout_constraintStart_toStartOf="@+id/gdStart"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/registrationTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/login_screen_don_t_have_an_account"
+            android:textAppearance="@style/RegistrationTextTitleBottom"
+            app:layout_constraintBottom_toTopOf="@+id/gdBottom"
+            app:layout_constraintEnd_toStartOf="@+id/gdEnd"
+            app:layout_constraintStart_toStartOf="@+id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/registrationTextView"
@@ -129,5 +135,6 @@
         app:layout_constraintStart_toStartOf="@+id/registrationTitleTextView"
         app:layout_constraintTop_toBottomOf="@+id/registrationTitleTextView" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
