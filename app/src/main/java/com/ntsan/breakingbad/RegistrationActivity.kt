@@ -13,9 +13,6 @@ class RegistrationActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val goToLoginActivity = findViewById<TextView>(R.id.backButtonTextView )
-        goToLoginActivity.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        goToLoginActivity.setOnClickListener { onBackPressed() }
     }
 }

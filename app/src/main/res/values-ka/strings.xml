@@ -11,4 +11,10 @@
     <string name="back_button_text">უკან</string>
     <string name="register_button">რეგისტრაცია</string>
     <string name="forgot_password_title">დაგავიწყდა პაროლი?</string>
+    <string name="enter_your_username">თქვენი სახელი</string>
+    <string name="enter_your_pa_w0rd">თქვენი პაროლი</string>
+    <string name="enter_email">მეილი</string>
+    <string name="enter_username">სახელი</string>
+    <string name="enter_pa_w0rd">პაროლი</string>
+    <string name="confirm_pa_w0rd">დაამოწმე პაროლი</string>
 </resources>

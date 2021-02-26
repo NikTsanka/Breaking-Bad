@@ -10,4 +10,10 @@
     <string name="back_button_text">BACK</string>
     <string name="register_button">Register</string>
     <string name="forgot_password_title">Forgot your password?</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_your_pa_w0rd">Enter your pa$$w0rd</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_pa_w0rd">Enter pa$$w0rd</string>
+    <string name="confirm_pa_w0rd">Confirm pa$$w0rd</string>
 </resources>
