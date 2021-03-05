@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BreakingBad">
-        <activity android:name=".RegistrationActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
