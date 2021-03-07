@@ -16,4 +16,5 @@
     <string name="enter_username">Enter username</string>
     <string name="enter_pa_w0rd">Enter pa$$w0rd</string>
     <string name="confirm_pa_w0rd">Confirm pa$$w0rd</string>
+    <string name="common_Ok">OK</string>
 </resources>

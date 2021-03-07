@@ -17,4 +17,5 @@
     <string name="enter_username">სახელი</string>
     <string name="enter_pa_w0rd">პაროლი</string>
     <string name="confirm_pa_w0rd">დაამოწმე პაროლი</string>
+    <string name="common_Ok">OK</string>
 </resources>
