@@ -34,5 +34,4 @@ object NetworkClient {
                 .addLast(KotlinJsonAdapterFactory())
                 .build()
         )
-
 }

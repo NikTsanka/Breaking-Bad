@@ -28,4 +28,5 @@
     <string name="logout">გასვლა</string>
     <string name="email_support">ელ.ფოსტის გაგზავნა</string>
     <string name="enter_username_or_password">შეიყვანეთ მომხმარებლის სახელი და პაროლი</string>
+    <string name="successfully_registration">Registration is successfully. Please login</string>
 </resources>

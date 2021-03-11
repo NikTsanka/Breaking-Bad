@@ -29,5 +29,6 @@
     <string name="enter_username_or_password">Please enter username and password</string>
     <string name="common_error" translatable="false">Error</string>
     <string name="common_unknown_error" translatable="false">Unknown error</string>
+    <string name="successfully_registration">Registration is successfully. Please login</string>
 
 </resources>

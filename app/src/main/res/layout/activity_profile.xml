@@ -141,19 +141,4 @@
         app:layout_constraintGuide_end="60dp"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <RelativeLayout
-        android:id="@+id/bottomNavViewBar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gdBottom">
-
-        <include layout="@layout/bottom_navigation_view" />
-
-    </RelativeLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

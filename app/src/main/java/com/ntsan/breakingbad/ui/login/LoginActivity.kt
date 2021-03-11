@@ -48,7 +48,6 @@ class LoginActivity : LanguageAwareActivity(), View.OnClickListener {
     }
 
     private fun login() = lifecycleScope.launchWhenCreated {
-
         val username = binding.userNameInput.text
         val password = binding.passwordInput.text
         if (username.isNullOrBlank() || password.isNullOrBlank()) {
