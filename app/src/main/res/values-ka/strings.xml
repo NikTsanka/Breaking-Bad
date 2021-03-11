@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">"Breaking Bad"</string>
-    <string name="button_text">ღილაკი</string>
-    <string name="login_screen_username">სახელი</string>
-    <string name="login_screen_password">პაროლი</string>
+    <string name="app_name">Breaking Bad</string>
+    <string name="button_text">ავტორიზაცია</string>
+    <string name="login_screen_username">მომხმარებლის სახელი</string>
+    <string name="login_screen_password">მომხმარებლის პაროლი</string>
     <string name="login_screen_don_t_have_an_account">არ ხართ დარეგისტრირებული?</string>
     <string name="login_screen_register">რეგისტრაცია</string>
-    <string name="confirm_password_input_title">დაამოწმე პაროლი</string>
-    <string name="email_input_text_title">მეილი</string>
+    <string name="confirm_password_input_title">გაიმეორეთ პაროლი</string>
+    <string name="name_input_text_title">სახელი</string>
     <string name="back_button_text">უკან</string>
     <string name="register_button">რეგისტრაცია</string>
     <string name="forgot_password_title">დაგავიწყდა პაროლი?</string>
-    <string name="enter_your_username">თქვენი სახელი</string>
-    <string name="enter_your_pa_w0rd">თქვენი პაროლი</string>
-    <string name="enter_email">მეილი</string>
-    <string name="enter_username">სახელი</string>
-    <string name="enter_pa_w0rd">პაროლი</string>
-    <string name="confirm_pa_w0rd">დაამოწმე პაროლი</string>
+    <string name="enter_your_username">მომხმარებლის სახელი</string>
+    <string name="enter_your_pa_w0rd">პაროლი</string>
+    <string name="enter_name">თქვენი სახელი</string>
+    <string name="enter_username">მომხმარებლის სახელი</string>
+    <string name="enter_pa_w0rd">ახალი პაროლი</string>
+    <string name="confirm_pa_w0rd">გაიმეორეთ პაროლი</string>
     <string name="common_Ok">OK</string>
+    <string name="home">მთავარი</string>
+    <string name="search">ძიება</string>
+    <string name="saved_items">შენახულები</string>
+    <string name="profile">პროფილი</string>
+    <string name="name">შენი სახელი</string>
+    <string name="username">მომხმარებლის სახელი</string>
+    <string name="language">ენის შეცვლა</string>
+    <string name="logout">გასვლა</string>
+    <string name="email_support">ელ.ფოსტის გაგზავნა</string>
+    <string name="enter_username_or_password">შეიყვანეთ მომხმარებლის სახელი და პაროლი</string>
 </resources>

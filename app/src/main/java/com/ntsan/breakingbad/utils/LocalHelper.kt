@@ -1,6 +1,6 @@
 package com.ntsan.breakingbad.utils
 
-/*
+
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.res.Configuration
@@ -46,4 +46,4 @@ fun updateLocale(context: Context, language: String): Context {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         updateResources(context, language)
     } else updateResourcesLegacy(context, language)
-}*/
+}

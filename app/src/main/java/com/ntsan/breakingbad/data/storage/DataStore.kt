@@ -2,7 +2,6 @@ package com.ntsan.breakingbad.data.storage
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import java.lang.RuntimeException
 import java.util.*
 
 object DataStore {

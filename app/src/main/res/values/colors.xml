@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primaryColor">#212121</color>
+    <color name="primaryLightColor">#484848</color>
+    <color name="primaryDarkColor">#000000</color>
+    <color name="secondaryColor">#ffbb3b</color>
+    <color name="secondaryLightColor">#ffed6d</color>
+    <color name="secondaryDarkColor">#c78b00</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+
     <color name="green">#299800</color>
-    <color name="orange">#FFBB3B</color>
-    <color name="black">#000000</color>
     <color name="black_900">#1A1A1A</color>
     <color name="black_700">#212121</color>
     <color name="black_500">#707070</color>
     <color name="black_200">#A2A2A2</color>
     <color name="white">#FFFFFFFF</color>
+
 </resources>

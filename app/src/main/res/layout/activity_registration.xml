@@ -3,35 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/secondaryTextColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_path_14"
+            app:layout_constraintBottom_toBottomOf="@id/gdTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/backBtnRegScr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/gdTop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/gotham_bold"
+            android:padding="2dp"
+            android:text="@string/back_button_text"
+            android:textColor="@color/black_200"
+            app:layout_constraintBottom_toBottomOf="@id/backArrow"
+            app:layout_constraintStart_toEndOf="@id/backArrow"
+            app:layout_constraintTop_toTopOf="@id/backArrow" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/ic_path_14" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/gotham_bold"
-                android:text="@string/back_button_text"
-                android:textColor="@color/black_200" />
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdStart"
@@ -82,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:padding="2dp"
             android:text="@string/login_screen_register"
             android:textAppearance="@style/RegistrationTextBottom"
             app:layout_constraintBottom_toTopOf="@+id/usernameInputEtRegScr"
@@ -95,7 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="@string/email_input_text_title"
+            android:padding="2dp"
+            android:text="@string/name_input_text_title"
             android:textAppearance="@style/UsernameAndPasswordTitle"
             app:layout_constraintBottom_toTopOf="@+id/usernameInputEtRegScr"
             app:layout_constraintStart_toStartOf="@+id/usernameInputEtRegScr" />
@@ -107,8 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:background="@drawable/input_background"
-            android:hint="@string/enter_email"
-            app:layout_constraintBottom_toTopOf="@+id/username2InputEditText"
+            android:hint="@string/enter_name"
+            app:layout_constraintBottom_toTopOf="@+id/usernameInputRegScrET"
             app:layout_constraintEnd_toEndOf="@+id/gdEnd"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/gdStart"
@@ -119,13 +122,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
+            android:padding="2dp"
             android:text="@string/login_screen_username"
             android:textAppearance="@style/UsernameAndPasswordTitle"
-            app:layout_constraintBottom_toTopOf="@+id/username2InputEditText"
-            app:layout_constraintStart_toStartOf="@+id/username2InputEditText" />
+            app:layout_constraintBottom_toTopOf="@+id/usernameInputRegScrET"
+            app:layout_constraintStart_toStartOf="@+id/usernameInputRegScrET" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/username2InputEditText"
+            android:id="@+id/usernameInputRegScrET"
             style="@style/InputField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -143,6 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
+            android:padding="2dp"
             android:text="@string/login_screen_password"
             android:textAppearance="@style/UsernameAndPasswordTitle"
             app:layout_constraintBottom_toTopOf="@+id/passwordInputEtRegScr"
@@ -161,13 +166,14 @@
             app:layout_constraintEnd_toStartOf="@+id/gdEnd"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/gdStart"
-            app:layout_constraintTop_toBottomOf="@+id/username2InputEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/usernameInputRegScrET" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/password2TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
+            android:padding="2dp"
             android:text="@string/confirm_password_input_title"
             android:textAppearance="@style/UsernameAndPasswordTitle"
             app:layout_constraintBottom_toTopOf="@+id/password2InputEditText"
@@ -208,6 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="12dp"
+            android:padding="2dp"
             android:text="@string/forgot_password_title"
             android:textAppearance="@style/RegistrationTextTitleBottom"
             app:layout_constraintBottom_toBottomOf="@id/gdBottom"

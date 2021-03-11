@@ -4,36 +4,30 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AppCompatActivity
 import com.ntsan.breakingbad.R
+import com.ntsan.breakingbad.base.LanguageAwareActivity
+import com.ntsan.breakingbad.databinding.ActivityRegistrationBinding
 import com.ntsan.breakingbad.ui.registration.RegistrationActivity.RegistrationActivityContract.Companion.KEY_DATA
 import com.ntsan.breakingbad.ui.registration.RegistrationActivity.RegistrationActivityContract.Companion.KEY_USERNAME
 
-class RegistrationActivity : AppCompatActivity() {
+class RegistrationActivity : LanguageAwareActivity() {
 
-    private var backButton: LinearLayout? = null
-    private var registerBtn: Button? = null
-    private var userNameInput: EditText? = null
+    private lateinit var binding: ActivityRegistrationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_BreakingBad)
-        setContentView(R.layout.activity_registration)
-        backButton = findViewById(R.id.backBtnRegScr)
-        backButton?.setOnClickListener { onBackPressed() }
-        registerBtn = findViewById(R.id.registrationBtnRegScr)
-        registerBtn?.setOnClickListener { returnUsername() }
-        userNameInput = findViewById(R.id.username2InputEditText)
-        userNameInput?.setText(intent.getStringExtra(KEY_DATA))
+        binding = ActivityRegistrationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.backBtnRegScr.setOnClickListener { onBackPressed() }
+        binding.registrationBtnRegScr.setOnClickListener { returnUsername() }
+        binding.usernameInputRegScrET.setText(intent.getStringExtra(KEY_DATA))
     }
 
     private fun returnUsername() {
-        val username = userNameInput?.text.toString()
+        val username = binding.usernameInputRegScrET.text.toString()
         val intent = Intent().putExtra(KEY_USERNAME, username)
         setResult(Activity.RESULT_OK, intent)
         finish()
