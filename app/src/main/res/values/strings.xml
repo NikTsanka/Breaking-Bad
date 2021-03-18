@@ -30,5 +30,8 @@
     <string name="common_error" translatable="false">Error</string>
     <string name="common_unknown_error" translatable="false">Unknown error</string>
     <string name="successfully_registration">Registration is successfully. Please login</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="characters_title_home_screen">Characters</string>
 
 </resources>

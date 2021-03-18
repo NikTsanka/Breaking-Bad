@@ -1,4 +1,4 @@
-package com.ntsan.breakingbad.data.models
+package com.ntsan.breakingbad.data.models.user
 
 
 import com.squareup.moshi.Json

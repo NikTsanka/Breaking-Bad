@@ -54,29 +54,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTv" />
 
-    <LinearLayout
-        android:id="@+id/languageBtn"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/languageIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:orientation="horizontal"
+        android:src="@drawable/ic_global"
         app:layout_constraintBottom_toTopOf="@id/dividerImageView"
-        app:layout_constraintStart_toStartOf="@id/gdStart">
+        app:layout_constraintStart_toStartOf="@id/gdStart" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_global" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/languageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:padding="2dp"
+        android:text="@string/language"
+        android:textAppearance="@style/LanguageLogoutBtn"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/languageIV"
+        app:layout_constraintStart_toEndOf="@id/languageIV"
+        app:layout_constraintTop_toTopOf="@id/languageIV"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:padding="2dp"
-            android:text="@string/language"
-            android:textAppearance="@style/LanguageLogoutBtn"
-            android:textColor="@color/white" />
-    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/dividerImageView"
@@ -91,30 +90,30 @@
         app:layout_constraintTop_toBottomOf="@+id/userNameTv"
         app:layout_constraintVertical_bias="0.0" />
 
-    <LinearLayout
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoutIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintStart_toStartOf="@id/gdStart"
+        app:layout_constraintTop_toBottomOf="@id/dividerImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@id/gdStart"
-        app:layout_constraintTop_toBottomOf="@id/dividerImageView">
+        android:layout_marginStart="16dp"
+        android:padding="2dp"
+        android:text="@string/logout"
+        android:textAppearance="@style/LanguageLogoutBtn"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/logoutIV"
+        app:layout_constraintStart_toEndOf="@id/logoutIV"
+        app:layout_constraintTop_toTopOf="@id/logoutIV" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:background="@drawable/ic_logout" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:padding="2dp"
-            android:text="@string/logout"
-            android:textAppearance="@style/LanguageLogoutBtn"
-            android:textColor="@color/white" />
-    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/emailTv"

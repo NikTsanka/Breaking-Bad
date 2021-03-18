@@ -45,11 +45,11 @@ abstract class LanguageAwareActivity : AppCompatActivity() {
             .show()
     }
 
-    protected fun showLoading() {
+    fun showLoading() {
         contentView.addView(loadingView)
     }
 
-    protected fun hideLoading() {
+    fun hideLoading() {
         contentView.removeView(loadingView)
     }
 }

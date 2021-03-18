@@ -9,7 +9,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object NetworkClient {
 
+    val breakingBadService by lazy { createBreakingBadService() }
+
     val userService by lazy { createUserService() }
+
+    private val loginInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
 
     private fun createUserService(): UserService {
         val retrofitBuilder = Retrofit.Builder()
@@ -19,14 +25,22 @@ object NetworkClient {
         return retrofitBuilder.build().create(UserService::class.java)
     }
 
+    private fun createBreakingBadService(): BreakingBadService {
+        val retrofitBuilder = Retrofit.Builder()
+        retrofitBuilder.baseUrl("https://www.breakingbadapi.com")
+        retrofitBuilder.client(
+            OkHttpClient().newBuilder()
+                .addInterceptor(loginInterceptor)
+                .build()
+        )
+        retrofitBuilder.addConverterFactory(moshiConvertor())
+        return retrofitBuilder.build().create(BreakingBadService::class.java)
+    }
+
     private fun getHttpClient() =
         OkHttpClient().newBuilder()
             .addInterceptor(AuthInterceptor())
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            ).build()
+            .addInterceptor(loginInterceptor).build()
 
     private fun moshiConvertor() =
         MoshiConverterFactory.create(

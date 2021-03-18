@@ -29,4 +29,5 @@
     <string name="email_support">ელ.ფოსტის გაგზავნა</string>
     <string name="enter_username_or_password">შეიყვანეთ მომხმარებლის სახელი და პაროლი</string>
     <string name="successfully_registration">Registration is successfully. Please login</string>
+    <string name="characters_title_home_screen">Characters</string>
 </resources>
