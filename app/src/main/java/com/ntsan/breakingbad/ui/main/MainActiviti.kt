@@ -15,5 +15,4 @@ class MainActivity : LanguageAwareActivity() {
 //            .add(binding.mainContainer.id, LoginFragment())
 //            .commit()
     }
-
 }

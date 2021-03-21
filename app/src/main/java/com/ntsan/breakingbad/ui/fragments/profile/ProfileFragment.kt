@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
@@ -18,8 +17,6 @@ import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.data.storage.DataStore
 import com.ntsan.breakingbad.databinding.FragmentProfileBinding
 import com.ntsan.breakingbad.ui.dialogs.LanguagePickerBottomSheet
-import com.ntsan.breakingbad.ui.fragments.home.HomeFragment
-import com.ntsan.breakingbad.ui.fragments.login.LoginFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -73,7 +70,8 @@ class ProfileFragment : Fragment() {
                         showDialog(R.string.common_error, "No internet connection")
                     }
                     e is HttpException && e.code() == 403 -> {
-                        activity?.findNavController(R.id.mainContainer)?.navigate(R.id.loginFragment)
+                        activity?.findNavController(R.id.mainContainer)
+                            ?.navigate(R.id.loginFragment)
                     }
                     else -> showDialog(
                         R.string.common_error,
@@ -86,7 +84,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun startLoginFragment(){
+    private fun startLoginFragment() {
         activity?.findNavController(R.id.mainContainer)?.navigate(R.id.loginFragment)
     }
 

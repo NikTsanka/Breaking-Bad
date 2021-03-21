@@ -13,13 +13,16 @@ object NetworkClient {
 
     val userService by lazy { createUserService() }
 
+    private const val USER_AUTHENTICATOR_URL = "https://commschool-android-api.herokuapp.com"
+    private const val BREAKING_BAD_API = "https://www.breakingbadapi.com"
+
     private val loginInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     private fun createUserService(): UserService {
         val retrofitBuilder = Retrofit.Builder()
-        retrofitBuilder.baseUrl("https://commschool-android-api.herokuapp.com")
+        retrofitBuilder.baseUrl(USER_AUTHENTICATOR_URL)
         retrofitBuilder.client(getHttpClient())
         retrofitBuilder.addConverterFactory(moshiConvertor())
         return retrofitBuilder.build().create(UserService::class.java)
@@ -27,7 +30,7 @@ object NetworkClient {
 
     private fun createBreakingBadService(): BreakingBadService {
         val retrofitBuilder = Retrofit.Builder()
-        retrofitBuilder.baseUrl("https://www.breakingbadapi.com")
+        retrofitBuilder.baseUrl(BREAKING_BAD_API)
         retrofitBuilder.client(
             OkHttpClient().newBuilder()
                 .addInterceptor(loginInterceptor)
@@ -48,4 +51,5 @@ object NetworkClient {
                 .addLast(KotlinJsonAdapterFactory())
                 .build()
         )
+
 }

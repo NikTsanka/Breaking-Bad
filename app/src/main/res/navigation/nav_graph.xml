@@ -17,11 +17,7 @@
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/registrationFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
+            app:popUpTo="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -33,8 +29,6 @@
             app:destination="@id/registrationFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"
             app:popUpTo="@id/loginFragment" />
     </fragment>
 </navigation>

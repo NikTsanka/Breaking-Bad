@@ -28,6 +28,6 @@
     <string name="logout">გასვლა</string>
     <string name="email_support">ელ.ფოსტის გაგზავნა</string>
     <string name="enter_username_or_password">შეიყვანეთ მომხმარებლის სახელი და პაროლი</string>
-    <string name="successfully_registration">Registration is successfully. Please login</string>
-    <string name="characters_title_home_screen">Characters</string>
+    <string name="successfully_registration">რეგისტრაცია წარმატებულია</string>
+    <string name="characters_title_home_screen">პერსონაჟები</string>
 </resources>

@@ -17,7 +17,7 @@ import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacter
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.BreakingBadItemBinding
 import com.ntsan.breakingbad.databinding.FragmentHomeBinding
-import com.ntsan.breakingbad.utils.BreakingBadDecorator
+import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -36,12 +36,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) = binding.root
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recycleView.layoutManager = GridLayoutManager(context, 2)
         binding.recycleView.adapter = adapter
         binding.recycleView.addItemDecoration(
-            BreakingBadDecorator(
+            BreakingBadCardDecorator(
                 itemHorizontalInsets = 19,
                 itemHorizontalSpacing = 16,
                 itemVerticalInsets = 32,
@@ -72,7 +73,7 @@ class HomeFragment : Fragment() {
             )
 
         override fun onBindViewHolder(holder: BreakingBadViewHolder, position: Int) {
-            val item = characterList.get(position)
+            val item = characterList[position]
             holder.binding.nameTv.text = item.name
             Glide.with(this@HomeFragment).load(item.img).into(holder.binding.contentIV)
         }

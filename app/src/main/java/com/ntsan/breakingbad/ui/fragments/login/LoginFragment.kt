@@ -11,6 +11,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.hideLoading
@@ -19,7 +20,7 @@ import com.ntsan.breakingbad.base.showLoading
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.data.storage.DataStore
 import com.ntsan.breakingbad.databinding.FragmentLoginBinding
-import com.ntsan.breakingbad.ui.fragments.home.HomeFragment
+import com.ntsan.breakingbad.ui.fragments.profile.ProfileFragment
 import com.ntsan.breakingbad.ui.fragments.registration.RegistrationFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -84,7 +85,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 )
             }
             DataStore.authToken = response.accessToken
-            startHomeFragment()
+            startProfile()
             hideLoading()
         } catch (e: Exception) {
             showDialog(
@@ -96,13 +97,21 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun startHomeFragment() {
+    /* private fun starHome() {
+         parentFragmentManager.commit {
+             setReorderingAllowed(true)
+             replace(R.id.mainContainer, HomeFragment())
+             addToBackStack("Home")
+         }
+     }*/
+
+    private fun startProfile() {
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace(R.id.mainContainer, HomeFragment())
-            addToBackStack("Home")
+            replace(R.id.mainContainer, ProfileFragment())
+            NavHostFragment()
+            addToBackStack("Profile")
         }
-        // findNavController().navigate(R.id.homeFragment)
     }
 
     private fun startRegistration() {

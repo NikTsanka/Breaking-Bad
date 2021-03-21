@@ -5,7 +5,7 @@ import android.view.View
 import androidx.annotation.Dimension
 import androidx.recyclerview.widget.RecyclerView
 
-class BreakingBadDecorator(
+class BreakingBadCardDecorator(
     @Dimension
     private val itemHorizontalSpacing: Int,
     @Dimension
@@ -25,9 +25,9 @@ class BreakingBadDecorator(
         val position = parent.getChildAdapterPosition(view)
         val itemCount = parent.adapter?.itemCount ?: 0
         outRect.set(
-            if (position % 2 == 0) itemHorizontalInsets else itemHorizontalSpacing/2,
+            if (position % 2 == 0) itemHorizontalInsets else itemHorizontalSpacing / 2,
             if (position == 0 || position == 1) itemVerticalInsets else itemVerticalSpacing,
-            if (position % 2 == 0) itemHorizontalSpacing/2 else itemHorizontalInsets,
+            if (position % 2 == 0) itemHorizontalSpacing / 2 else itemHorizontalInsets,
             if (position == itemCount - 1 || position == itemCount - 2) itemHorizontalInsets else 0
         )
     }
