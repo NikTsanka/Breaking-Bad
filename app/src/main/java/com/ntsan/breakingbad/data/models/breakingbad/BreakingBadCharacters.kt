@@ -1,8 +1,8 @@
 package com.ntsan.breakingbad.data.models.breakingbad
 
 
-import com.squareup.moshi.Json
 import androidx.annotation.Keep
+import com.squareup.moshi.Json
 
 @Keep
 data class BreakingBadCharacters(

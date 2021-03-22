@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:padding="8dp"
+        android:textAllCaps="true"
         android:text="@string/characters_title_home_screen"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/recycleView"
