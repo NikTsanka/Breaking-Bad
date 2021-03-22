@@ -51,7 +51,7 @@
     </style>
     <style name="DetailsScreenFontStyle.Title" parent="DetailsScreenFontStyle">
         <item name="fontFamily">@font/gotham_bold</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">10sp</item>
     </style>
     <style name="DetailsScreenFontStyle.Content" parent="DetailsScreenFontStyle">
         <item name="fontFamily">@font/gotham_book</item>
@@ -131,11 +131,9 @@
         <item name="android:textSize">8dp</item>
         <item name="textAllCaps">true</item>
     </style>
-
     <style name="Text.Tab.Active">
         <item name="android:textColor">@color/secondaryColor</item>
     </style>
-
     <style name="Text.Tab.Inactive">
         <item name="android:textColor">@color/black_100</item>
     </style>

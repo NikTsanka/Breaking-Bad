@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
-import com.ntsan.breakingbad.base.hideLoading
 import com.ntsan.breakingbad.base.showDialog
-import com.ntsan.breakingbad.base.showLoading
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
-import com.ntsan.breakingbad.databinding.BreakingBadItemBinding
 import com.ntsan.breakingbad.databinding.FragmentHomeBinding
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
 import kotlinx.coroutines.Dispatchers
@@ -26,8 +24,13 @@ class HomeFragment : Fragment() {
 
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
 
+    private var offset = 0
+
     private var characterList = mutableListOf<BreakingBadCharacters>()
-    private val adapter = BreakingBadAdapter()
+    private val adapter = CardAdapter(characterList) {
+        activity?.findNavController(R.id.mainContainer)
+            ?.navigate(R.id.cardDetailFragment, bundleOf())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +40,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recycleView.layoutManager = GridLayoutManager(context, 2)
+        val layoutManager = GridLayoutManager(context, 2)
+        layoutManager.spanSizeLookup = LoaderSpanSizeLookup()
+        binding.recycleView.layoutManager = layoutManager
         binding.recycleView.adapter = adapter
         binding.recycleView.addItemDecoration(
             BreakingBadCardDecorator(
@@ -47,13 +52,29 @@ class HomeFragment : Fragment() {
                 itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
             )
         )
+        binding.recycleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val gridLayoutManager = (recyclerView.layoutManager as GridLayoutManager)
+                if (recyclerView.adapter?.itemCount == gridLayoutManager.findLastVisibleItemPosition() + 1) {
+                    loadMoreCard()
+                }
+            }
+        })
+        loadMoreCard()
+    }
+
+    private fun loadMoreCard() {
+        if (adapter.loadingMore) return
         lifecycleScope.launchWhenCreated {
+            adapter.loadingMore = true
+            adapter.notifyItemChanged(adapter.itemCount - 1)
             try {
-                showLoading()
+                adapter.loadingMore = true
                 val data = withContext(Dispatchers.IO) {
                     NetworkClient.breakingBadService.getCharacter(
                         limit = CARD_SIZE,
-                        offset = CARD_START_ID
+                        offset = offset
                     )
                 }
                 characterList.addAll(data)
@@ -61,33 +82,22 @@ class HomeFragment : Fragment() {
             } catch (e: IOException) {
                 showDialog(R.string.common_error, e.message ?: "")
             } finally {
-                hideLoading()
+                adapter.loadingMore = false
+                offset += 10
             }
         }
     }
 
-    inner class BreakingBadAdapter() : RecyclerView.Adapter<BreakingBadViewHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            BreakingBadViewHolder(
-                BreakingBadItemBinding.inflate(LayoutInflater.from(parent.context))
-            )
-
-        override fun onBindViewHolder(holder: BreakingBadViewHolder, position: Int) {
-            val item = characterList[position]
-            holder.binding.nameTv.text = item.name
-            Glide.with(this@HomeFragment).load(item.img).into(holder.binding.contentIV)
+    inner class LoaderSpanSizeLookup : GridLayoutManager.SpanSizeLookup() {
+        override fun getSpanSize(position: Int): Int {
+            return if (adapter.itemCount - 1 == position) 2 else 1
         }
-
-        override fun getItemCount() = characterList.size
     }
 
-    inner class BreakingBadViewHolder(val binding: BreakingBadItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
-
-
     companion object {
-        const val CARD_SIZE = 62
-        const val CARD_START_ID = 0
+        const val CARD_SIZE = 10
+        const val VIEW_TYPE_CARD = 1
+        const val VIEW_TYPE_LOADER = 2
+
     }
 }

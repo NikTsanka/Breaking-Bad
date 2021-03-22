@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/_44dp"
+            app:layout_constraintGuide_begin="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_end="@dimen/_44dp" />
+            app:layout_constraintGuide_end="@dimen/_24dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdTop"
@@ -69,8 +69,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cardIV"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="314dp"
+            android:layout_height="390dp"
             android:background="@drawable/detail_image_border"
             android:paddingHorizontal="@dimen/_18dp"
             android:paddingVertical="@dimen/_18dp"

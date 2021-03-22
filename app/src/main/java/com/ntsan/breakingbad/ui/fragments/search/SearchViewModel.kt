@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
@@ -14,9 +15,11 @@ class SearchViewModel : ViewModel() {
     private val _cards = MutableLiveData<List<BreakingBadCharacters>>()
     val cards: LiveData<List<BreakingBadCharacters>> get() = _cards
 
-    fun onSearchTextChange(string: CharSequence) {
-        if (string.length < 3) return
+    fun onSearchTextChange(string: CharSequence?) {
+        if (string.isNullOrEmpty()) _cards.postValue(emptyList())
+        if (string?.length ?: 0 < 3) return
         viewModelScope.launch(Dispatchers.IO) {
+            delay(1000)
             try {
                 val cards = NetworkClient.breakingBadService.getCharacter(
                     name = "$string",

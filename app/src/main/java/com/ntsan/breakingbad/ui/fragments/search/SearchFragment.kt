@@ -8,11 +8,8 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
-import com.ntsan.breakingbad.databinding.BreakingBadItemBinding
 import com.ntsan.breakingbad.databinding.FragmentSearchBinding
 import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
@@ -24,7 +21,7 @@ class SearchFragment : Fragment() {
     private var binding: FragmentSearchBinding? = null
 
     private var characterList = mutableListOf<BreakingBadCharacters>()
-    private val adapter = CardAdapter{
+    private val adapter = CardAdapter(characterList) {
 
     }
 
@@ -38,7 +35,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.recycleView?.layoutManager = GridLayoutManager(context, 2)
+        val layoutManager = GridLayoutManager(context, 2)
+        layoutManager.spanSizeLookup = LoaderSpanSizeLookup()
+        binding?.recycleView?.layoutManager = layoutManager
         binding?.recycleView?.adapter = adapter
         binding?.recycleView?.addItemDecoration(
             BreakingBadCardDecorator(
@@ -54,9 +53,13 @@ class SearchFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
         binding?.searchInput?.doOnTextChanged { text, _, _, _ ->
-            if (text != null) {
-                viewModel.onSearchTextChange(text)
-            }
+            viewModel.onSearchTextChange(text)
+        }
+    }
+
+    inner class LoaderSpanSizeLookup : GridLayoutManager.SpanSizeLookup() {
+        override fun getSpanSize(position: Int): Int {
+            return if (adapter.itemCount - 1 == position) 2 else 1
         }
     }
 }

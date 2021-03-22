@@ -39,5 +39,6 @@
     <dimen name="_44dp">44dp</dimen>
     <dimen name="_46dp">46dp</dimen>
     <dimen name="_64dp">64dp</dimen>
+    <dimen name="_72dp">72dp</dimen>
 
 </resources>

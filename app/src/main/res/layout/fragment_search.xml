@@ -12,16 +12,16 @@
         style="@style/InputField"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_46dp"
+        android:layout_marginStart="@dimen/_18dp"
+        android:layout_marginTop="@dimen/_18dp"
+        android:layout_marginEnd="@dimen/_18dp"
         android:background="@drawable/input_background"
         android:drawableStart="@drawable/ic_search_2"
         android:drawablePadding="@dimen/_16dp"
         android:gravity="center_vertical"
         android:hint="@string/search"
         android:padding="@dimen/_2dp"
-        android:layout_marginTop="@dimen/_18dp"
-        android:layout_marginEnd="@dimen/_18dp"
-        android:layout_marginStart="@dimen/_18dp"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
