@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryDarkColor"
+    tools:context=".ui.fragments.cardDetails.CardDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_path_14"
+            app:layout_constraintBottom_toBottomOf="@id/gdTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/backBtnTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/gotham_bold"
+            android:padding="2dp"
+            android:text="@string/back_button_text"
+            android:textColor="@color/black_200"
+            app:layout_constraintBottom_toBottomOf="@id/backArrow"
+            app:layout_constraintStart_toEndOf="@id/backArrow"
+            app:layout_constraintTop_toTopOf="@id/backArrow" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_44dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="@dimen/_44dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/_34dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_end="@dimen/_34dp" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cardIV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/detail_image_border"
+            android:paddingHorizontal="@dimen/_18dp"
+            android:paddingVertical="@dimen/_18dp"
+            app:layout_constraintDimensionRatio="W,390:314"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toTopOf="@id/gdTop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:padding="2dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.Name"
+            app:layout_constraintBottom_toTopOf="@id/lastNameTv"
+            app:layout_constraintEnd_toEndOf="@id/cardIV"
+            app:layout_constraintStart_toStartOf="@id/cardIV"
+            tools:text="Walter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lastNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"
+            android:padding="2dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.LastName"
+            app:layout_constraintBottom_toBottomOf="@id/cardIV"
+            app:layout_constraintEnd_toEndOf="@id/cardIV"
+            app:layout_constraintStart_toStartOf="@id/cardIV"
+            tools:text="White" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nicknameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_64dp"
+            android:padding="2dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.Title"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/cardIV"
+            tools:text="Heisenberg" />
+
+        <LinearLayout
+            android:id="@+id/occupation"
+            style="@style/DetailsScreenFontStyle.Details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/nicknameTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detailsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:text="@string/details"
+            android:textAppearance="@style/DetailsScreenFontStyle.Title"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/occupation" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/birthdayTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:text="@string/birthday"
+            android:textAppearance="@style/DetailsScreenFontStyle.Details"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/detailsTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/birthdayContentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.Content"
+            app:layout_constraintBottom_toBottomOf="@id/birthdayTv"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintTop_toTopOf="@+id/birthdayTv"
+            tools:text="09-07-1958" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statusTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:text="@string/status"
+            android:textAppearance="@style/DetailsScreenFontStyle.Details"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/birthdayTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statusContentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.Content"
+            app:layout_constraintBottom_toBottomOf="@id/statusTv"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintTop_toTopOf="@+id/statusTv"
+            tools:text="Presumed dead" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/portrayedTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:text="@string/portrayed"
+            android:textAppearance="@style/DetailsScreenFontStyle.Details"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/statusTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/portrayedContentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="@dimen/_16dp"
+            android:paddingEnd="@dimen/_16dp"
+            android:textAppearance="@style/DetailsScreenFontStyle.Content"
+            app:layout_constraintBottom_toBottomOf="@id/portrayedTv"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintTop_toTopOf="@+id/portrayedTv"
+            tools:text="Bryan Cranston" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appearanceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:text="@string/appearance"
+            android:textAppearance="@style/DetailsScreenFontStyle.Title"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/portrayedTv" />
+
+        <HorizontalScrollView
+            android:id="@+id/appearanceHSV"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            app:layout_constraintBottom_toBottomOf="@id/gdBottom"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/appearanceTv">
+
+        </HorizontalScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

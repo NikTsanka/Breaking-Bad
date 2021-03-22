@@ -38,7 +38,7 @@ class NavHomeFragment : Fragment(), BottomNavigationView.OnNavigationItemSelecte
                 controller.navigate(R.id.show_home)
             }
             R.id.search -> {
-
+                controller.navigate(R.id.show_search)
             }
             R.id.savedItem -> {
 

@@ -16,6 +16,6 @@
 
     <style name="splashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
-        <item name="android:statusBarColor">@color/secondaryTextColor</item>
+        <item name="android:statusBarColor">@color/primaryDarkColor</item>
     </style>
 </resources>

@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.hideLoading
 import com.ntsan.breakingbad.base.showDialog
@@ -33,7 +34,9 @@ class RegistrationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.backBtnTv?.setOnClickListener { activity?.onBackPressed() }
+        binding?.backBtnTv?.setOnClickListener {
+            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+        }
         binding?.registrationButton?.setOnClickListener { registerUser() }
     }
 

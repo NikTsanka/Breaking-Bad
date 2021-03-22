@@ -13,7 +13,7 @@ import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.hideLoading
 import com.ntsan.breakingbad.base.showDialog
 import com.ntsan.breakingbad.base.showLoading
-import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacter
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.BreakingBadItemBinding
 import com.ntsan.breakingbad.databinding.FragmentHomeBinding
@@ -26,10 +26,8 @@ class HomeFragment : Fragment() {
 
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
 
-    private var characterList = mutableListOf<BreakingBadCharacter>()
-
+    private var characterList = mutableListOf<BreakingBadCharacters>()
     private val adapter = BreakingBadAdapter()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +41,20 @@ class HomeFragment : Fragment() {
         binding.recycleView.adapter = adapter
         binding.recycleView.addItemDecoration(
             BreakingBadCardDecorator(
-                itemHorizontalInsets = 19,
-                itemHorizontalSpacing = 16,
-                itemVerticalInsets = 32,
-                itemVerticalSpacing = 16
+                itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
+                itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),
+                itemVerticalInsets = resources.getDimensionPixelSize(R.dimen._0dp),
+                itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
             )
         )
         lifecycleScope.launchWhenCreated {
             try {
                 showLoading()
                 val data = withContext(Dispatchers.IO) {
-                    NetworkClient.breakingBadService.getCharacter(62, 0)
+                    NetworkClient.breakingBadService.getCharacter(
+                        limit = CARD_SIZE,
+                        offset = CARD_START_ID
+                    )
                 }
                 characterList.addAll(data)
                 adapter.notifyDataSetChanged()
@@ -83,4 +84,10 @@ class HomeFragment : Fragment() {
 
     inner class BreakingBadViewHolder(val binding: BreakingBadItemBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+
+    companion object {
+        const val CARD_SIZE = 62
+        const val CARD_START_ID = 0
+    }
 }

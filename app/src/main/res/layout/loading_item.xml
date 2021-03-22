@@ -6,8 +6,8 @@
     <ProgressBar
         android:id="@+id/loader"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/_64dp"
+        android:layout_height="@dimen/_64dp"
         android:layout_gravity="center" />
 
 </FrameLayout>

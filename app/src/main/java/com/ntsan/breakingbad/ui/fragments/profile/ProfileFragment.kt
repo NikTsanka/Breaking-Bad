@@ -43,8 +43,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.logoutBtn.setOnClickListener {
-            startLoginFragment()
             DataStore.authToken = null
+            startLoginFragment()
         }
         binding.emailTv.setOnClickListener { sendEmailSupport() }
 
@@ -70,8 +70,7 @@ class ProfileFragment : Fragment() {
                         showDialog(R.string.common_error, "No internet connection")
                     }
                     e is HttpException && e.code() == 403 -> {
-                        activity?.findNavController(R.id.mainContainer)
-                            ?.navigate(R.id.loginFragment)
+                        startLoginFragment()
                     }
                     else -> showDialog(
                         R.string.common_error,

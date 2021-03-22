@@ -97,14 +97,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    /* private fun starHome() {
-         parentFragmentManager.commit {
-             setReorderingAllowed(true)
-             replace(R.id.mainContainer, HomeFragment())
-             addToBackStack("Home")
-         }
-     }*/
-
     private fun startProfile() {
         parentFragmentManager.commit {
             setReorderingAllowed(true)

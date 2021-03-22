@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import androidx.annotation.Keep
 
 @Keep
-data class BreakingBadCharacter(
+data class BreakingBadCharacters(
     @Json(name = "appearance")
     val appearance: List<Int>,
     @Json(name = "better_call_saul_appearance")

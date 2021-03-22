@@ -21,9 +21,9 @@
     </style>
 
     <style name="CharacterTV" parent="TextAppearance.AppCompat.Body1">
-    <item name="android:textColor">@color/white</item>
-    <item name="fontFamily">@font/gotham_medium</item>
-    <item name="android:textSize">37sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:textSize">37sp</item>
     </style>
 
     <style name="Content.Name" parent="TextAppearance.AppCompat.Body1">
@@ -36,6 +36,30 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DetailsScreenFontStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="DetailsScreenFontStyle.Name" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:textSize">37sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.LastName" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.Title" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.Content" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.Details" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextInput" parent="TextAppearance.AppCompat.Body2">
@@ -106,9 +130,11 @@
         <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textSize">8dp</item>
     </style>
+
     <style name="Text.Tab.Active">
         <item name="android:textColor">@color/secondaryColor</item>
     </style>
+
     <style name="Text.Tab.Inactive">
         <item name="android:textColor">@color/black_100</item>
     </style>
