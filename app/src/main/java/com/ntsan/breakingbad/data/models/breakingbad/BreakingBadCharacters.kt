@@ -1,15 +1,18 @@
 package com.ntsan.breakingbad.data.models.breakingbad
 
 
+import android.os.Parcelable
 import androidx.annotation.Keep
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 @Keep
+@Parcelize
 data class BreakingBadCharacters(
     @Json(name = "appearance")
     val appearance: List<Int>,
-    @Json(name = "better_call_saul_appearance")
-    val betterCallSaulAppearance: List<Any>,
+//    @Json(name = "better_call_saul_appearance")
+//    val betterCallSaulAppearance: List<Any>,
     @Json(name = "birthday")
     val birthday: String,
     @Json(name = "category")
@@ -28,4 +31,4 @@ data class BreakingBadCharacters(
     val portrayed: String,
     @Json(name = "status")
     val status: String
-)
+) : Parcelable

@@ -15,6 +15,7 @@ import com.ntsan.breakingbad.base.showDialog
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.FragmentHomeBinding
+import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragment
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -29,7 +30,7 @@ class HomeFragment : Fragment() {
     private var characterList = mutableListOf<BreakingBadCharacters>()
     private val adapter = CardAdapter(characterList) {
         activity?.findNavController(R.id.mainContainer)
-            ?.navigate(R.id.cardDetailFragment, bundleOf())
+            ?.navigate(R.id.cardDetailFragment, bundleOf(CardDetailFragment.KEY_DATA to it))
     }
 
     override fun onCreateView(
