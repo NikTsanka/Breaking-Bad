@@ -6,14 +6,37 @@
     <string name="login_screen_don_t_have_an_account">Don’t have an account?</string>
     <string name="login_screen_register">REGISTRATION</string>
     <string name="confirm_password_input_title">CONFIRM PASSWORD</string>
-    <string name="email_input_text_title">EMAIL</string>
+    <string name="name_input_text_title">NAME</string>
     <string name="back_button_text">BACK</string>
     <string name="register_button">Register</string>
     <string name="forgot_password_title">Forgot your password?</string>
     <string name="enter_your_username">Enter your username</string>
     <string name="enter_your_pa_w0rd">Enter your pa$$w0rd</string>
-    <string name="enter_email">Enter email</string>
+    <string name="enter_name">Enter name</string>
     <string name="enter_username">Enter username</string>
     <string name="enter_pa_w0rd">Enter pa$$w0rd</string>
     <string name="confirm_pa_w0rd">Confirm pa$$w0rd</string>
+    <string name="common_Ok">OK</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="saved_items">Saved Items</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="username">username</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="email_support">Email Support</string>
+    <string name="enter_username_or_password">Please enter username and password</string>
+    <string name="common_error" translatable="false">Error</string>
+    <string name="common_unknown_error" translatable="false">Unknown error</string>
+    <string name="successfully_registration">Registration is successfully. Please login</string>
+    <string name="characters_title_home_screen">Characters</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="common_no_connection" translatable="false">No internet connection</string>
+    <string name="details" translatable="false">Details</string>
+    <string name="birthday" translatable="false">Birthday</string>
+    <string name="status" translatable="false">Status</string>
+    <string name="portrayed" translatable="false">Portrayed</string>
+    <string name="appearance" translatable="false">Appearance</string>
+
 </resources>
