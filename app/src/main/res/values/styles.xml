@@ -23,7 +23,7 @@
     <style name="CharacterTV" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_medium</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">38sp</item>
     </style>
 
     <style name="Content.Name" parent="TextAppearance.AppCompat.Body1">

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ntsan.breakingbad.data.storage.DataStore
+import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
 import com.ntsan.breakingbad.databinding.LanguageBottomSheetFragmentBinding
 
 class LanguagePickerBottomSheet : BottomSheetDialogFragment() {

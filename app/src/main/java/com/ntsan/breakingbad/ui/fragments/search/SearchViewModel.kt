@@ -15,6 +15,8 @@ class SearchViewModel : ViewModel() {
     private val _cards = MutableLiveData<List<BreakingBadCharacters>>()
     val cards: LiveData<List<BreakingBadCharacters>> get() = _cards
 
+    val message = MutableLiveData<String>()
+
     fun onSearchTextChange(string: CharSequence?) {
         if (string.isNullOrEmpty()) _cards.postValue(emptyList())
         if (string?.length ?: 0 < 3) return
@@ -27,6 +29,7 @@ class SearchViewModel : ViewModel() {
                     offset = 0
                 )
                 _cards.postValue(cards)
+                message.postValue("Count ${cards.size}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }

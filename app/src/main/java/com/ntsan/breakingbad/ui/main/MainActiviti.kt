@@ -11,8 +11,5 @@ class MainActivity : LanguageAwareActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-//        supportFragmentManager.beginTransaction()
-//            .add(binding.mainContainer.id, LoginFragment())
-//            .commit()
     }
 }
