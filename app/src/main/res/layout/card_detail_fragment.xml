@@ -81,15 +81,6 @@
             app:layout_constraintGuide_percent="0.9" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/black_fill"
-            app:layout_constraintBottom_toBottomOf="@id/cardIV"
-            app:layout_constraintEnd_toEndOf="@id/cardIV"
-            app:layout_constraintStart_toStartOf="@id/cardIV"
-            app:layout_constraintTop_toTopOf="@id/cardIV" />
-
-        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cardIV"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -100,6 +91,17 @@
             app:layout_constraintEnd_toEndOf="@id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@id/gdImgStart"
             app:layout_constraintTop_toTopOf="@id/gdTop" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/foreground"
+            android:paddingHorizontal="@dimen/_18dp"
+            android:paddingVertical="@dimen/_18dp"
+            app:layout_constraintBottom_toBottomOf="@id/cardIV"
+            app:layout_constraintEnd_toEndOf="@id/cardIV"
+            app:layout_constraintStart_toStartOf="@id/cardIV"
+            app:layout_constraintTop_toTopOf="@id/cardIV" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTv"
@@ -119,6 +121,7 @@
             android:layout_height="0dp"
             android:gravity="center_horizontal"
             android:padding="2dp"
+            android:layout_marginBottom="@dimen/_16dp"
             android:textAppearance="@style/DetailsScreenFontStyle.LastName"
             app:layout_constraintBottom_toBottomOf="@id/cardIV"
             app:layout_constraintEnd_toEndOf="@id/cardIV"
@@ -325,15 +328,6 @@
                     app:layout_constraintStart_toStartOf="@+id/seasonTV"
                     app:layout_constraintTop_toBottomOf="@id/seasonTV" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycleViewSeason"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/seasonTV"
-                    app:layout_constraintStart_toStartOf="@+id/seasonTV"
-                    app:layout_constraintTop_toBottomOf="@id/seasonTV"/>
-
                 <!--<androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/seasonTwo"
                     android:layout_width="wrap_content"
@@ -433,7 +427,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </HorizontalScrollView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

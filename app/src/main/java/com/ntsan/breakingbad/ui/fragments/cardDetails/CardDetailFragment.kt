@@ -1,6 +1,7 @@
 package com.ntsan.breakingbad.ui.fragments.cardDetails
 
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,16 +71,23 @@ class CardDetailFragment : BaseFragment() {
         binding?.apply {
             Glide.with(cardIV)
                 .load(card.img)
-                .centerCrop()
                 .into(cardIV)
             nameTv.text = card.name.split(" ")[0]
-            lastNameTv.text = card.name
+            lastNameTv.text = card.name.split(" ")[1]
             nicknameTv.text = card.nickname
-            occupationTV.text = card.occupation.toString()
+            occupationTV.text = card.occupation.joinToString()
             birthdayContentTv.text = card.birthday
             statusContentTv.text = card.status
             portrayedContentTv.text = card.portrayed
-            seasonCountTv.text = card.appearance.toString().split(",")[0]
+            seasonCountTv.text = card.appearance.toString()
+                .substring(1, card.appearance.toString().length - 1)
+                .replace(",", "")
+        }
+    }
+
+    private fun clearData(item: BreakingBadCharacters) {
+        item.apply {
+
         }
     }
 

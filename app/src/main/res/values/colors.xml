@@ -17,6 +17,6 @@
     <color name="black_200">#A2A2A2</color>
     <color name="black_100">#C6C6C6</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="black_fill">#46000000</color>
+    <color name="white_fill">#0DFFFFFF</color>
 
 </resources>
