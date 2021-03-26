@@ -28,9 +28,9 @@
         android:name="com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragment"
         android:label="CardDetailFragment"
         tools:layout="@layout/card_detail_fragment">
-        <action
-            android:id="@+id/show_card_details"
-            app:destination="@id/cardDetailFragment"/>
+        <argument
+            android:name="data"
+            app:argType="com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters"/>
     </fragment>
 
     <fragment
@@ -46,4 +46,10 @@
             app:popEnterAnim="@anim/from_bottom"
             app:popExitAnim="@anim/to_top" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_cardDetailsFragment"
+        app:destination="@id/cardDetailFragment" />
+
+    <include app:graph="@navigation/home_nav_graph" />
 </navigation>

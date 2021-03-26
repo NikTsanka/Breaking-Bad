@@ -20,18 +20,20 @@ class SearchViewModel : ViewModel() {
     fun onSearchTextChange(string: CharSequence?) {
         if (string.isNullOrEmpty()) _cards.postValue(emptyList())
         if (string?.length ?: 0 < 3) return
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             delay(1000)
-            try {
-                val cards = NetworkClient.breakingBadService.getCharacter(
-                    name = "$string",
-                    limit = 62,
-                    offset = 0
-                )
-                _cards.postValue(cards)
-                message.postValue("Count ${cards.size}")
-            } catch (e: Exception) {
-                e.printStackTrace()
+            launch(Dispatchers.IO) {
+                try {
+                    val cards = NetworkClient.breakingBadService.getCharacter(
+                        name = "$string",
+                        limit = 62,
+                        offset = 0
+                    )
+                    _cards.postValue(cards)
+                    message.postValue("Count ${cards.size}")
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }

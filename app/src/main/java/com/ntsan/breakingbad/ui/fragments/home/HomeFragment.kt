@@ -8,11 +8,14 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.databinding.FragmentHomeBinding
 import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragment
+import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragmentDirections
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
+import com.ntsan.breakingbad.utils.LoadMoreListener
 
 class HomeFragment : BaseFragment() {
 
@@ -23,13 +26,13 @@ class HomeFragment : BaseFragment() {
     override fun getViewModelInstance() = viewModel
 
     private val adapter = CardAdapter() {
-        activity?.findNavController(R.id.mainContainer)
-                ?.navigate(R.id.cardDetailFragment, bundleOf(CardDetailFragment.KEY_DATA to it))
+        val action = CardDetailFragmentDirections.actionGlobalCardDetailsFragment(it)
+        activity?.findNavController(R.id.mainContainer)?.navigate(action)
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
@@ -43,12 +46,12 @@ class HomeFragment : BaseFragment() {
             recycleView.layoutManager = layoutManager
             recycleView.adapter = adapter
             recycleView.addItemDecoration(
-                    BreakingBadCardDecorator(
-                            itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
-                            itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),
-                            itemVerticalInsets = resources.getDimensionPixelSize(R.dimen._0dp),
-                            itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
-                    )
+                BreakingBadCardDecorator(
+                    itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
+                    itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),
+                    itemVerticalInsets = resources.getDimensionPixelSize(R.dimen._0dp),
+                    itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
+                )
             )
             viewModel.items.observe(viewLifecycleOwner) {
                 adapter.cardList = it
@@ -56,7 +59,6 @@ class HomeFragment : BaseFragment() {
             swipeToRefresh.setOnRefreshListener {
                 viewModel.onRefresh()
             }
-
             viewModel.loadingMore.observe(viewLifecycleOwner) {
                 adapter.loadingMore = it
             }

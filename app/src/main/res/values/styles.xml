@@ -128,7 +128,7 @@
 
     <style name="Text.Tab" parent="TextAppearance.AppCompat.Body1">
         <item name="fontFamily">@font/gotham_bold</item>
-        <item name="android:textSize">8dp</item>
+        <item name="android:textSize">8sp</item>
         <item name="textAllCaps">true</item>
     </style>
     <style name="Text.Tab.Active">
@@ -136,6 +136,13 @@
     </style>
     <style name="Text.Tab.Inactive">
         <item name="android:textColor">@color/black_100</item>
+    </style>
+
+    <style name="SeasonText" parent="TextAppearance.AppCompat.Large">
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
 </resources>

@@ -33,10 +33,16 @@
     <string name="characters_title_home_screen">Characters</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="common_no_connection" translatable="false">No internet connection</string>
+    <string name="login_screen_wrong_credentials" translatable="false">Wrong Credentials</string>
     <string name="details" translatable="false">Details</string>
     <string name="birthday" translatable="false">Birthday</string>
     <string name="status" translatable="false">Status</string>
     <string name="portrayed" translatable="false">Portrayed</string>
     <string name="appearance" translatable="false">Appearance</string>
+    <string name="btn_add" translatable="false">Add</string>
+    <string name="card_details_add" translatable="false">Add</string>
+    <string name="card_details_remove" translatable="false">Delete</string>
+    <string name="card_details_login" translatable="false">Log In</string>
+    <string name="season">Season</string>
 
 </resources>

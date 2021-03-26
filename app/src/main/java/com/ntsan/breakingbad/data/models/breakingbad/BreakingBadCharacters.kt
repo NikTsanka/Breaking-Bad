@@ -11,8 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class BreakingBadCharacters(
     @Json(name = "appearance")
     val appearance: List<Int>,
-//    @Json(name = "better_call_saul_appearance")
-//    val betterCallSaulAppearance: List<Any>,
+    @Json(name = "better_call_saul_appearance")
+    val betterCallSaulAppearance: List<Int>,
     @Json(name = "birthday")
     val birthday: String,
     @Json(name = "category")

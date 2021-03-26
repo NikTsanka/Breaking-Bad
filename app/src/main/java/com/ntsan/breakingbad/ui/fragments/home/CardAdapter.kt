@@ -77,7 +77,7 @@ class CardAdapter(
         }
     }
 
-    class LoaderSpanSizeLookup(val adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) :
+    class LoaderSpanSizeLookup(private val adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) :
             GridLayoutManager.SpanSizeLookup() {
         override fun getSpanSize(position: Int): Int {
             return if (adapter.itemCount - 1 == position) 2 else 1

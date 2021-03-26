@@ -7,8 +7,8 @@ class LoadMoreListener(val callback: () -> Unit) : RecyclerView.OnScrollListener
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
-        val gLayoutManager = (recyclerView.layoutManager as GridLayoutManager)
-        if (recyclerView.adapter?.itemCount == gLayoutManager.findLastVisibleItemPosition() + 1) {
+        val gridLayoutManager = (recyclerView.layoutManager as GridLayoutManager)
+        if (recyclerView.adapter?.itemCount == gridLayoutManager.findLastVisibleItemPosition() + 1) {
             callback()
         }
     }
