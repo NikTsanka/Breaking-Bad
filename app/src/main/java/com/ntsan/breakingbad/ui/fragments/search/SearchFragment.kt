@@ -15,12 +15,12 @@ import com.ntsan.breakingbad.databinding.FragmentSearchBinding
 import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragmentDirections
 import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
-
+import com.ntsan.breakingbad.utils.UiErrorInterface
 
 class SearchFragment : Fragment() {
 
-    private val viewModel: SearchViewModel by viewModels()
     private var binding: FragmentSearchBinding? = null
+    private val viewModel: SearchViewModel by viewModels()
 
     private val adapter = CardAdapter() {
         val action = CardDetailFragmentDirections.actionGlobalCardDetailsFragment(it)
@@ -40,9 +40,9 @@ class SearchFragment : Fragment() {
         val layoutManager = GridLayoutManager(context, 2)
         layoutManager.spanSizeLookup = CardAdapter.LoaderSpanSizeLookup(adapter)
         binding?.apply {
-            recycleView.layoutManager = layoutManager
-            recycleView.adapter = adapter
-            recycleView.addItemDecoration(
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
+            recyclerView.addItemDecoration(
                 BreakingBadCardDecorator(
                     itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
                     itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),
@@ -56,9 +56,9 @@ class SearchFragment : Fragment() {
             searchInput.doOnTextChanged { text, _, _, _ ->
                 viewModel.onSearchTextChange(text)
             }
-            viewModel.message.observe(viewLifecycleOwner) {
-                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-            }
+//            viewModel.message.observe(viewLifecycleOwner) {
+//                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+//            }
         }
     }
 }

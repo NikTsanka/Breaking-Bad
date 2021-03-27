@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor"
+    android:background="@color/black"
     tools:context=".ui.fragments.cardDetails.CardDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -289,7 +289,7 @@
                     android:id="@+id/seasonOneBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryDarkColor"
+                    android:background="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_rectangle_15" />
@@ -332,7 +332,7 @@
                     android:id="@+id/seasonTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryDarkColor"
+                    android:background="@color/black"
                     app:layout_constraintStart_toEndOf="@id/seasonOne"
                     app:layout_constraintTop_toTopOf="@id/seasonOne"
                     app:srcCompat="@drawable/ic_rectangle_15" />
@@ -364,7 +364,7 @@
                     android:id="@+id/seasonThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryDarkColor"
+                    android:background="@color/black"
                     app:layout_constraintStart_toEndOf="@id/seasonTwo"
                     app:layout_constraintTop_toTopOf="@id/seasonTwo"
                     app:srcCompat="@drawable/ic_rectangle_15" />
@@ -396,7 +396,7 @@
                     android:id="@+id/seasonFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/primaryDarkColor"
+                    android:background="@color/black"
                     app:layout_constraintStart_toEndOf="@id/seasonThree"
                     app:layout_constraintTop_toTopOf="@id/seasonThree"
                     app:srcCompat="@drawable/ic_rectangle_15" />

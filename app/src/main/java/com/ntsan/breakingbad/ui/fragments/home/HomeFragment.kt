@@ -20,7 +20,6 @@ import com.ntsan.breakingbad.utils.LoadMoreListener
 class HomeFragment : BaseFragment() {
 
     private var binding: FragmentHomeBinding? = null
-
     private val viewModel by viewModels<HomeViewModel>()
 
     override fun getViewModelInstance() = viewModel
@@ -43,9 +42,9 @@ class HomeFragment : BaseFragment() {
         val layoutManager = GridLayoutManager(context, 2)
         layoutManager.spanSizeLookup = CardAdapter.LoaderSpanSizeLookup(adapter)
         binding?.apply {
-            recycleView.layoutManager = layoutManager
-            recycleView.adapter = adapter
-            recycleView.addItemDecoration(
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
+            recyclerView.addItemDecoration(
                 BreakingBadCardDecorator(
                     itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
                     itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),

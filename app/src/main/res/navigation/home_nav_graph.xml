@@ -20,6 +20,10 @@
         android:name="com.ntsan.breakingbad.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/secondSearchFragment"
+        android:name="com.ntsan.breakingbad.ui.fragments.SecondSearchFragment"
+        android:label="SecondSearch"/>
 
     <action
         android:id="@+id/show_home"

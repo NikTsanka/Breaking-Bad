@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.BreakingBad" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimary">@color/black</item>
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/black_800</item>
         <!--   theme UI controls like checkboxes and text fields -->
-        <item name="colorOnPrimary">@color/primaryLightColor</item>
+        <item name="colorOnPrimary">@color/black_300</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/secondaryLightColor</item>
+        <item name="colorSecondary">@color/yellow_800</item>
+        <item name="colorSecondaryVariant">@color/yellow_900</item>
+        <item name="colorOnSecondary">@color/yellow_200</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -18,6 +18,6 @@
 
     <style name="splashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
-        <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 </resources>

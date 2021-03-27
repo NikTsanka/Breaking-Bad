@@ -44,7 +44,6 @@ class HomeViewModel : BaseViewModel() {
                     )
                 }
                 _items.postValue((_items.value ?: emptyList()) + data)
-
             } catch (e: IOException) {
                 showDialog(DialogData(title = R.string.common_error, message = e.message ?: ""))
             } finally {
@@ -53,9 +52,7 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-
-
     companion object {
-        const val CARD_SIZE = 10
+        const val CARD_SIZE = 8
     }
 }

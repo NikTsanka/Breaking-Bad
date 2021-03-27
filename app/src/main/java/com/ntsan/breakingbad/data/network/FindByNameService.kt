@@ -4,12 +4,11 @@ import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface BreakingBadService {
+interface FindByNameService {
 
     @GET("/api/characters")
-    suspend fun getCharacter(
-        @Query("limit") limit: Int,
-        @Query("offset") offset: Int
+    suspend fun findByName(
+        @Query("name") name: String? = null
     ): List<BreakingBadCharacters>
 
 }
