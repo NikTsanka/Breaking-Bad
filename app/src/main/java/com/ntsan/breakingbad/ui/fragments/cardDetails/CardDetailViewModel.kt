@@ -36,7 +36,7 @@ class CardDetailViewModel(private val data: BreakingBadCharacters) : BaseViewMod
     private fun saveCard() = viewModelScope.launch(Dispatchers.IO) {
         try {
             showLoading()
-            NetworkClient.userService.saveUserCard(data.charId)
+            NetworkClient.userService.saveUserCards(data.charId)
             _cardSaved.postValue(CardSavedState.Saved)
         } catch (e: Exception) {
             handleNetworkError(e)
@@ -61,7 +61,7 @@ class CardDetailViewModel(private val data: BreakingBadCharacters) : BaseViewMod
     fun determineCardSavedState() = viewModelScope.launch {
         try {
             showLoading()
-            val cardIds = withContext(Dispatchers.IO) { NetworkClient.userService.getUserCard() }
+            val cardIds = withContext(Dispatchers.IO) { NetworkClient.userService.getUserCards() }
             val state =
                 if (cardIds.contains(data.charId)) CardSavedState.Saved else CardSavedState.NotSaved
             _cardSaved.postValue(state)

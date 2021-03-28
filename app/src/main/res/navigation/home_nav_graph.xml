@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/savedCardsFragment"
         android:name="com.ntsan.breakingbad.ui.savedcards.SavedCardsFragment"
-        android:label="savedCards"
+        android:label="SavedCardsFragment"
         tools:layout="@layout/saved_cards_screen"/>
 
     <action

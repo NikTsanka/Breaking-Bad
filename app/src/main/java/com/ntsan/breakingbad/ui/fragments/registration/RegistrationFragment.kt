@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
-import com.ntsan.breakingbad.base.hideLoading
-import com.ntsan.breakingbad.base.showDialog
-import com.ntsan.breakingbad.base.showLoading
+import com.ntsan.breakingbad.base.*
 import com.ntsan.breakingbad.data.models.user.UserRegistration
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.FragmentRegistrationBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class RegistrationFragment : Fragment() {
+class RegistrationFragment : BaseFragment() {
 
     private var binding: FragmentRegistrationBinding? = null
+    private val viewModel by viewModels<RegistrationViewModel>()
+
+    override fun getViewModelInstance() = viewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,63 +38,44 @@ class RegistrationFragment : Fragment() {
         binding?.backBtnTv?.setOnClickListener {
             findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
         }
-        binding?.registrationButton?.setOnClickListener { registerUser() }
-    }
-
-    private fun registerUser() = lifecycleScope.launchWhenCreated {
-        val name = binding?.nameInputEt?.text
-        val userName = binding?.userNameInputEt?.text
-        val password = binding?.passwordInputEt?.text
-        val confirmPassword = binding?.passwordConfirmInputEt?.text
-
-        if (name.isNullOrBlank()
-            || userName.isNullOrBlank()
-            || password.isNullOrBlank()
-            || confirmPassword.isNullOrBlank()
-        ) {
-            if (password != confirmPassword) {
-                Toast.makeText(
-                    context,
-                    "Not the same password",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-                return@launchWhenCreated
-            }
-            Toast.makeText(
-                context,
-                getString(R.string.enter_username_or_password),
-                Toast.LENGTH_LONG
+        binding?.registrationButton?.setOnClickListener {
+            viewModel.onRegister(
+                name = binding?.nameInputEt?.text,
+                username = binding?.userNameInputEt?.text,
+                password = binding?.passwordInputEt?.text,
+                confirmPassword = binding?.passwordConfirmInputEt?.text
             )
-                .show()
-            return@launchWhenCreated
-        } else {
-            showLoading()
-            try {
-                withContext(Dispatchers.IO) {
-                    val user = UserRegistration(
-                        userName = userName.toString(),
-                        password = password.toString(),
-                        name = name.toString()
-                    )
-                    NetworkClient.userService.createUser(content_type = "application/json", user)
-                }
-                returnUsername()
-            } catch (e: Exception) {
-                showDialog(
-                    R.string.common_error,
-                    e.message ?: getString(R.string.common_unknown_error)
-                )
-            } finally {
-                hideLoading()
-            }
+        }
+        viewModel.validationError.observe(viewLifecycleOwner,this::showValidationError)
+        viewModel.registrationComplete.observe(viewLifecycleOwner){
+            findNavController().popBackStack(R.id.loginFragment,true)
         }
     }
 
-    private fun returnUsername() {
-        val username = binding?.userNameInputEt?.text.toString()
-        setFragmentResult(KEY_DATA, bundleOf(KEY_USERNAME to username))
-        parentFragmentManager.popBackStack()
+    private fun showValidationError(error: RegistrationViewModel.ValidationError) {
+        binding?.apply {
+            when (error) {
+                RegistrationViewModel.ValidationError.EmptyUsername -> {
+                    userNameInputEt.error = getString(R.string.registration_error_empty_username)
+                }
+                RegistrationViewModel.ValidationError.EmptyName -> {
+                    nameInputEt.error = getString(R.string.registration_error_empty_name)
+                }
+                RegistrationViewModel.ValidationError.EmptyPassword -> {
+                    passwordInputEt.error = getString(R.string.registration_error_empty_password)
+                }
+                RegistrationViewModel.ValidationError.PasswordsNotMatching -> {
+                    passwordConfirmInputEt.error =
+                        getString(R.string.registration_error_passwords_not_matching)
+                }
+                RegistrationViewModel.ValidationError.None -> {
+                    userNameInputEt.error = null
+                    nameInputEt.error = null
+                    passwordInputEt.error = null
+                    passwordConfirmInputEt.error = null
+                }
+            }
+        }
     }
 
     companion object {

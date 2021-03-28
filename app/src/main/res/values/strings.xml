@@ -47,5 +47,9 @@
     <string name="season">Season</string>
     <string name="georgian_lang" translatable="false">ქართული</string>
     <string name="english_lang" translatable="false">English</string>
+    <string name="registration_error_empty_username" translatable="false">Empty username</string>
+    <string name="registration_error_empty_name" translatable="false">Empty name</string>
+    <string name="registration_error_empty_password" translatable="false">Empty password</string>
+    <string name="registration_error_passwords_not_matching" translatable="false">Passwords not matching</string>
 
 </resources>

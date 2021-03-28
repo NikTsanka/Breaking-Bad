@@ -1,6 +1,5 @@
 package com.ntsan.breakingbad.data.models.breakingbad
 
-
 import android.os.Parcelable
 import androidx.annotation.Keep
 import com.squareup.moshi.Json
