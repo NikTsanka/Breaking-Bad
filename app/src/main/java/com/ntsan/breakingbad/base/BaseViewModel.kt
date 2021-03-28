@@ -21,7 +21,6 @@ abstract class BaseViewModel : ViewModel(), UiErrorInterface {
     protected fun showDialog(data: DialogData) = _dialog.postValue(Event(data))
 
 
-
     override fun onNoInternet() {
         showDialog(
                 DialogData(

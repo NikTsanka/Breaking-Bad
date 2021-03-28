@@ -2,27 +2,21 @@ package com.ntsan.breakingbad.ui.fragments.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseViewModel
 import com.ntsan.breakingbad.base.DialogData
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
-import com.ntsan.breakingbad.ui.fragments.home.HomeViewModel
 import kotlinx.coroutines.Dispatchers
-import com.ntsan.breakingbad.base.showDialog
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.IOException
 
 class SearchViewModel : BaseViewModel() {
 
     private val _cards = MutableLiveData<List<BreakingBadCharacters>>()
     val cards: LiveData<List<BreakingBadCharacters>> get() = _cards
 
-//    val message = MutableLiveData<String>()
+    val message = MutableLiveData<String>()
 
     fun onSearchTextChange(string: CharSequence?) {
         if (string.isNullOrEmpty()) _cards.postValue(emptyList())
@@ -34,9 +28,14 @@ class SearchViewModel : BaseViewModel() {
                         name = "$string"
                     )
                     _cards.postValue(cards)
-//                    message.postValue("Count ${cards.size}")
+                    message.postValue("Count ${cards.size}")
                 } catch (e: Exception) {
-                    showDialog(DialogData(title = R.string.common_error, message = e.message ?: ""))
+                    showDialog(
+                        DialogData(
+                            title = R.string.common_error,
+                            message = e.message ?: ""
+                        )
+                    )
                 }
             }
         }

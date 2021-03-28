@@ -28,6 +28,7 @@
     <string name="email_support">Email Support</string>
     <string name="enter_username_or_password">Please enter username and password</string>
     <string name="common_error" translatable="false">Error</string>
+    <string name="common_note" translatable="false">Note</string>
     <string name="common_unknown_error" translatable="false">Unknown error</string>
     <string name="successfully_registration">Registration is successfully. Please login</string>
     <string name="characters_title_home_screen">Characters</string>
@@ -44,5 +45,7 @@
     <string name="card_details_remove" translatable="false">Delete</string>
     <string name="card_details_login" translatable="false">Log In</string>
     <string name="season">Season</string>
+    <string name="georgian_lang" translatable="false">ქართული</string>
+    <string name="english_lang" translatable="false">English</string>
 
 </resources>

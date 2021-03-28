@@ -15,7 +15,6 @@ import com.ntsan.breakingbad.databinding.FragmentSearchBinding
 import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragmentDirections
 import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
-import com.ntsan.breakingbad.utils.UiErrorInterface
 
 class SearchFragment : Fragment() {
 
@@ -56,9 +55,9 @@ class SearchFragment : Fragment() {
             searchInput.doOnTextChanged { text, _, _, _ ->
                 viewModel.onSearchTextChange(text)
             }
-//            viewModel.message.observe(viewLifecycleOwner) {
-//                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-//            }
+            viewModel.message.observe(viewLifecycleOwner) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

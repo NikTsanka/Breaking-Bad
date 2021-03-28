@@ -11,7 +11,6 @@ object NetworkClient {
 
     val breakingBadService by lazy { createBreakingBadService() }
     val findByNameService by lazy { createFindByNameService() }
-
     val userService by lazy { createUserService() }
 
     private const val USER_AUTHENTICATOR_URL = "https://commschool-android-api.herokuapp.com"

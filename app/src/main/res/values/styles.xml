@@ -38,6 +38,11 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="LanguageBottomSheet" parent="DetailsScreenFontStyle">
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">25sp</item>
+    </style>
+
     <style name="DetailsScreenFontStyle" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item>
     </style>

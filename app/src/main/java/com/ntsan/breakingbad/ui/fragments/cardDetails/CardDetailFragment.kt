@@ -23,11 +23,9 @@ class CardDetailFragment : BaseFragment() {
     private var binding: CardDetailFragmentBinding? = null
 
     private val cardDetailArg by navArgs<CardDetailFragmentArgs>()
-
     private val viewModel by viewModels<CardDetailViewModel> {
         CardDetailViewModel.CardDetailViewModelFactory(cardDetailArg.data)
     }
-
     private val loginViewModel by activityViewModels<LoginViewModel>()
 
     override fun getViewModelInstance() = viewModel
@@ -82,6 +80,7 @@ class CardDetailFragment : BaseFragment() {
             seasonCountTv.text = card.appearance.toString()
                 .substring(1, card.appearance.toString().length - 1)
                 .replace(",", "")
+
         }
     }
 
@@ -95,3 +94,9 @@ class CardDetailFragment : BaseFragment() {
         const val KEY_DATA = "key_data"
     }
 }
+
+/*
+private fun String.replace(regex: String): CharSequence? {
+        regex
+}
+*/

@@ -6,85 +6,65 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
-import com.ntsan.breakingbad.base.hideLoading
-import com.ntsan.breakingbad.base.showDialog
-import com.ntsan.breakingbad.base.showLoading
-import com.ntsan.breakingbad.data.network.NetworkClient
+import com.ntsan.breakingbad.data.models.user.UserProfile
 import com.ntsan.breakingbad.data.storage.DataStore
 import com.ntsan.breakingbad.databinding.FragmentProfileBinding
 import com.ntsan.breakingbad.ui.dialogs.LanguagePickerBottomSheet
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import java.io.IOException
+import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
+import com.ntsan.breakingbad.utils.observeEvent
 
 
 class ProfileFragment : Fragment() {
 
-    private val binding by lazy { FragmentProfileBinding.inflate(layoutInflater) }
+    private var binding: FragmentProfileBinding? = null
+    private val viewModel by viewModels<ProfileViewModel>()
+    private val loginViewModel by activityViewModels<LoginViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return binding.root
+    ): View? {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.languageBtn.setOnClickListener {
+        binding?.languageBtn?.setOnClickListener {
             val languagePickerBottomSheet = LanguagePickerBottomSheet()
             languagePickerBottomSheet.show(childFragmentManager, "tag")
         }
-
-        binding.logoutBtn.setOnClickListener {
+        binding?.logoutBtn?.setOnClickListener {
             DataStore.authToken = null
-            startLoginFragment()
+            findNavController().navigate(R.id.show_home)
         }
-        binding.emailTv.setOnClickListener { sendEmailSupport() }
-
-        getUserData()
+        viewModel.userProfile.observe(viewLifecycleOwner, this::showUserData)
+        viewModel.loginRequired.observeEvent(viewLifecycleOwner) {
+            activity?.findNavController(R.id.mainContainer)?.navigate(R.id.loginFragment)
+        }
+        loginViewModel.loginFlowFinished.observeEvent(viewLifecycleOwner) { loginSuccess ->
+            if (loginSuccess)
+                viewModel.getUserData()
+            else
+                findNavController().navigate(R.id.show_home)
+        }
+        binding?.emailTv?.setOnClickListener { sendEmailSupport() }
     }
 
-    private fun getUserData() {
-        lifecycleScope.launchWhenCreated {
-            showLoading()
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    NetworkClient.userService.getUser()
-                }
-                binding.userNameTv.text = response.userName
-                binding.nameTv.text = response.name
-                Glide.with(this@ProfileFragment)
-                    .load(response.imageUrl)
-                    .centerCrop()
-                    .into(binding.profilePictureIv)
-            } catch (e: Exception) {
-                when {
-                    e is IOException -> {
-                        showDialog(R.string.common_error, "No internet connection")
-                    }
-                    e is HttpException && e.code() == 403 -> {
-                        startLoginFragment()
-                    }
-                    else -> showDialog(
-                        R.string.common_error,
-                        e.message ?: getString(R.string.common_unknown_error)
-                    )
-                }
-            } finally {
-                hideLoading()
-            }
-        }
-    }
-
-    private fun startLoginFragment() {
-        activity?.findNavController(R.id.mainContainer)?.navigate(R.id.loginFragment)
+    private fun showUserData(userProfile: UserProfile) {
+        binding?.userNameTv?.text = userProfile.userName
+        binding?.nameTv?.text = userProfile.name
+        Glide.with(this@ProfileFragment)
+            .load(userProfile.imageUrl)
+            .centerCrop()
+            .into(binding?.profilePictureIv!!)
     }
 
     private fun sendEmailSupport() {

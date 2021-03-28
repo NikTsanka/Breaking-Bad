@@ -10,22 +10,48 @@
         android:id="@+id/langButtonGeo"
         android:layout_width="@dimen/language_button_dimen"
         android:layout_height="@dimen/language_button_dimen"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/_42dp"
         android:background="@drawable/georgia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/langButtonEng"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/langButtonEng"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/geLangTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2dp"
+        android:text="@string/georgian_lang"
+        android:textAppearance="@style/LanguageBottomSheet"
+        android:layout_marginBottom="@dimen/_18dp"
+        android:layout_marginEnd="@dimen/_12dp"
+        app:layout_constraintBottom_toTopOf="@+id/enLangTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/langButtonGeo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/langButtonEng"
         android:layout_width="@dimen/language_button_dimen"
         android:layout_height="@dimen/language_button_dimen"
+        android:layout_marginStart="@dimen/_42dp"
         android:background="@drawable/united_kingdom"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/langButtonGeo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/enLangTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2dp"
+        android:text="@string/english_lang"
+        android:layout_marginBottom="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_12dp"
+        android:textAppearance="@style/LanguageBottomSheet"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/langButtonGeo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/langButtonEng"
+        app:layout_constraintTop_toBottomOf="@+id/geLangTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
 package com.ntsan.breakingbad.ui.dialogs
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ntsan.breakingbad.data.storage.DataStore
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
@@ -34,5 +36,20 @@ class LanguagePickerBottomSheet : BottomSheetDialogFragment() {
             dismiss()
             activity?.recreate()
         }
+        binding.enLangTV.setOnClickListener {
+            DataStore.language = "en"
+            dismiss()
+            activity?.recreate()
+        }
+        binding.geLangTV.setOnClickListener {
+            DataStore.language = "ka"
+            dismiss()
+            activity?.recreate()
+        }
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState)
+            .apply { (this as BottomSheetDialog).behavior.expandedOffset = 300 }
     }
 }
