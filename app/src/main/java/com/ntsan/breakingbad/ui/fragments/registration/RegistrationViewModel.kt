@@ -45,7 +45,7 @@ class RegistrationViewModel : BaseViewModel() {
                     userName = username.toString(),
                     password = password.toString()
                 )
-                NetworkClient.userService.createUser(content_type = "application/json", user)
+                NetworkClient.userService.createUser(content_type = APPLICATION_JSON, user)
 
                 val userToken = NetworkClient.userService.login(
                     username = username.toString(),
@@ -63,6 +63,10 @@ class RegistrationViewModel : BaseViewModel() {
 
     enum class ValidationError {
         EmptyUsername, EmptyName, EmptyPassword, PasswordsNotMatching, None
+    }
+
+    companion object {
+        const val APPLICATION_JSON = "application/json"
     }
 
 }

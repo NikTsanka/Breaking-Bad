@@ -84,19 +84,7 @@ class CardDetailFragment : BaseFragment() {
         }
     }
 
-    private fun clearData(item: BreakingBadCharacters) {
-        item.apply {
-
-        }
-    }
-
     companion object {
         const val KEY_DATA = "key_data"
     }
 }
-
-/*
-private fun String.replace(regex: String): CharSequence? {
-        regex
-}
-*/

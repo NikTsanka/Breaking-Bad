@@ -14,9 +14,15 @@ interface BreakingBadService {
         @Query("offset") offset: Int
     ): List<BreakingBadCharacters>
 
-    @GET("api/characters/{charId}")
+    @GET("api/characters/{id}")
     suspend fun getCardById(
-        @Path("charId") charId: Int
+        @Path("id") id: Int
     ): Data<BreakingBadCharacters>
+
+
+    @GET("/api/characters")
+    suspend fun findByName(
+        @Query("name") name: String? = null
+    ): List<BreakingBadCharacters>
 
 }

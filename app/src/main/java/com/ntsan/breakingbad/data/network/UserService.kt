@@ -27,9 +27,11 @@ interface UserService {
     suspend fun getUserCards(): List<Int>
 
     @POST("/user/braking-bad/save-character")
-    suspend fun saveUserCards(@Query("characterId") id: Int)
+    suspend fun saveUserCards(@Query("characterId") cardId: Int)
 
     @DELETE("/user/braking-bad/delete-my-character")
-    suspend fun deleteUserCard(@Query("characterId") id: Int)
+    suspend fun deleteUserCard(@Query("characterId") cardId: Int)
+
+    fun createUser(userRegistration: UserRegistration)
 
 }

@@ -10,7 +10,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object NetworkClient {
 
     val breakingBadService by lazy { createBreakingBadService() }
-    val findByNameService by lazy { createFindByNameService() }
     val userService by lazy { createUserService() }
 
     private const val USER_AUTHENTICATOR_URL = "https://commschool-android-api.herokuapp.com"
@@ -38,18 +37,6 @@ object NetworkClient {
         )
         retrofitBuilder.addConverterFactory(moshiConvertor())
         return retrofitBuilder.build().create(BreakingBadService::class.java)
-    }
-
-    private fun createFindByNameService(): FindByNameService {
-        val retrofitBuilder = Retrofit.Builder()
-        retrofitBuilder.baseUrl(BREAKING_BAD_API)
-        retrofitBuilder.client(
-            OkHttpClient().newBuilder()
-                .addInterceptor(loginInterceptor)
-                .build()
-        )
-        retrofitBuilder.addConverterFactory(moshiConvertor())
-        return retrofitBuilder.build().create(FindByNameService::class.java)
     }
 
     private fun getHttpClient() =

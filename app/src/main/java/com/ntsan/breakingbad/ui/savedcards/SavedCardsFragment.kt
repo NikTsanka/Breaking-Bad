@@ -56,6 +56,10 @@ class SavedCardsFragment : BaseFragment() {
                     itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
                 )
             )
+            swipeToRefresh.setOnRefreshListener {
+                viewModel.refresh()
+                swipeToRefresh.isRefreshing = false
+            }
             viewModel.requestLogin.observeEvent(viewLifecycleOwner){
                 login()
             }

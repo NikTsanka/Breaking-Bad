@@ -24,7 +24,7 @@ class SearchViewModel : BaseViewModel() {
         viewModelScope.launch {
             launch(Dispatchers.IO) {
                 try {
-                    val cards = NetworkClient.findByNameService.findByName(
+                    val cards = NetworkClient.breakingBadService.findByName(
                         name = "$string"
                     )
                     _cards.postValue(cards)

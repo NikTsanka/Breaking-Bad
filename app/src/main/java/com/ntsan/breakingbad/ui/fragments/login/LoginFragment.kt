@@ -4,19 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.*
-import com.ntsan.breakingbad.data.network.NetworkClient
-import com.ntsan.breakingbad.data.storage.DataStore
 import com.ntsan.breakingbad.databinding.FragmentLoginBinding
 import com.ntsan.breakingbad.ui.fragments.registration.RegistrationFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class LoginFragment : BaseFragment(), View.OnClickListener {
 
@@ -58,6 +52,7 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        hideKeyboard()
         when (v) {
             binding?.registrationTvLogScr -> {
                 startRegistration()

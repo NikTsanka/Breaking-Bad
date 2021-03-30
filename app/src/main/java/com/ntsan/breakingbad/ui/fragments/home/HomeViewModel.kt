@@ -11,7 +11,6 @@ import com.ntsan.breakingbad.data.network.NetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.IOException
 
 class HomeViewModel : BaseViewModel() {
 
