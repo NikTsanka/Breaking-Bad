@@ -20,7 +20,7 @@ object DataStore {
 
     fun initialize( sharedPreferences: SharedPreferences) {
         DataStore.sharedPreferences = sharedPreferences
-      //  dataBase = Room.databaseBuilder(context, BreakingBadDB::class.java,"brbaddb").build()
+      //  dataBase = Room.databaseBuilder(context, BreakingBadDB::class.java, "brbaddb").build()
     }
 
     var language: String

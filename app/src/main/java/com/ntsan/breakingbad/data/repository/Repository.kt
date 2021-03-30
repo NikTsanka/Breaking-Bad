@@ -12,13 +12,13 @@ object Repository {
     suspend fun getLocalCardById(id: Int): BreakingBadCharacters? {
         return DataStore.db.getCardDAO().getById(id)
     }
-
+/*
     suspend fun getRemoteCardById(id: Int): BreakingBadCharacters {
-        return NetworkClient.breakingBadService.getCardById(id).data
+        return NetworkClient.breakingBadService.getCardById(id).to
             .also {
                 DataStore.db.getCardDAO().insert(it)
             }
-    }
+    }*/
 
     suspend fun getRemoteCardsCardsAndStore(
         limit: Int,

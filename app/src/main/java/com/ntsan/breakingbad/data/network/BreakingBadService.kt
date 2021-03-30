@@ -17,7 +17,7 @@ interface BreakingBadService {
     @GET("api/characters/{id}")
     suspend fun getCardById(
         @Path("id") id: Int
-    ): Data<BreakingBadCharacters>
+    ): List<BreakingBadCharacters>
 
 
     @GET("/api/characters")

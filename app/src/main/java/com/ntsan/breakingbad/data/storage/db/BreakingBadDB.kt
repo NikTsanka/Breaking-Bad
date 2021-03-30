@@ -12,9 +12,9 @@ import com.ntsan.breakingbad.data.storage.db.typeConvertors.StringListTypeConver
     entities = [BreakingBadCharacters::class, SavedCardIdEntity::class, UserProfile::class],
     version = 1
 )
-@TypeConverters(
-    StringListTypeConverter::class,
-)
+//@TypeConverters(
+////    StringListTypeConverter::class,
+//)
 abstract class BreakingBadDB : RoomDatabase() {
     abstract fun getCardDAO(): CardDao
     abstract fun getSavedCardsDao(): SavedCardIdDao
