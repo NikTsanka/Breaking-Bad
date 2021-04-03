@@ -33,7 +33,6 @@ object DataStore {
                 ?: throw RuntimeException("not initialized!!")
         }
 
-
     var authToken: String?
         @SuppressLint("ApplySharedPref")
         set(value) {

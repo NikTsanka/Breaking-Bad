@@ -2,18 +2,13 @@ package com.ntsan.breakingbad.ui.savedcards
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.ntsan.breakingbad.base.BaseViewModel
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.network.NetworkClient
-import com.ntsan.breakingbad.data.repository.Repository
 import com.ntsan.breakingbad.utils.Event
 import com.ntsan.breakingbad.utils.handleNetworkError
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -24,11 +19,6 @@ class SavedCardsViewModel : BaseViewModel() {
 
     private val _userCards = MutableLiveData<List<BreakingBadCharacters>>()
     val userCards: LiveData<List<BreakingBadCharacters>> get() = _userCards
-
-    init {
-        getSavedCards()
-    }
-
 
     fun getSavedCards() = viewModelScope.launch {
         try {
@@ -45,6 +35,10 @@ class SavedCardsViewModel : BaseViewModel() {
         } finally {
             hideLoading()
         }
+    }
+
+    init {
+        getSavedCards()
     }
 
 

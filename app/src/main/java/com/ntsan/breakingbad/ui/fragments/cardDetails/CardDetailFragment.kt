@@ -1,7 +1,6 @@
 package com.ntsan.breakingbad.ui.fragments.cardDetails
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,8 +69,8 @@ class CardDetailFragment : BaseFragment() {
             Glide.with(cardIV)
                 .load(card.img)
                 .into(cardIV)
-            nameTv.text = card.name.split(" ")[0]
-            lastNameTv.text = card.name.split(" ")[1]
+            nameTv.text = getFirstWord(card.name, " ")
+            lastNameTv.text = trimFirstWord(card.name)
             nicknameTv.text = card.nickname
             occupationTV.text = card.occupation.joinToString()
             birthdayContentTv.text = card.birthday
@@ -84,7 +83,13 @@ class CardDetailFragment : BaseFragment() {
         }
     }
 
-    companion object {
-        const val KEY_DATA = "key_data"
+    private fun trimFirstWord(s: String): String {
+        return if (s.contains(" ")) s.substring(s.indexOf(' ')).trim { it <= ' ' } else ""
     }
+
+    private fun getFirstWord(s: String, separator: String): String {
+        val index = s.indexOf(separator)
+        return if (index < 0) s else s.substring(0, index)
+    }
+
 }
