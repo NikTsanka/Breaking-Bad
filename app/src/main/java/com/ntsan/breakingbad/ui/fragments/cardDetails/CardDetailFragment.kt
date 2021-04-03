@@ -91,5 +91,4 @@ class CardDetailFragment : BaseFragment() {
         val index = s.indexOf(separator)
         return if (index < 0) s else s.substring(0, index)
     }
-
 }

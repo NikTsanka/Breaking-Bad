@@ -41,7 +41,6 @@ class SavedCardsViewModel : BaseViewModel() {
         getSavedCards()
     }
 
-
     /*val userCards: LiveData<List<BreakingBadCharacters>> =
         Repository.getLocalSavedCardsFlow().map { list ->
             list.map { id ->
