@@ -95,9 +95,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/foreground"
             android:paddingHorizontal="@dimen/_18dp"
             android:paddingVertical="@dimen/_18dp"
+            android:src="@drawable/foreground"
             app:layout_constraintBottom_toBottomOf="@id/cardIV"
             app:layout_constraintEnd_toEndOf="@id/cardIV"
             app:layout_constraintStart_toStartOf="@id/cardIV"
@@ -119,9 +119,9 @@
             android:id="@+id/lastNameTv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_16dp"
             android:gravity="center_horizontal"
             android:padding="2dp"
-            android:layout_marginBottom="@dimen/_16dp"
             android:textAppearance="@style/DetailsScreenFontStyle.LastName"
             app:layout_constraintBottom_toBottomOf="@id/cardIV"
             app:layout_constraintEnd_toEndOf="@id/cardIV"
@@ -427,6 +427,98 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </HorizontalScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quotesTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:padding="2dp"
+            android:text="@string/quotes"
+            android:textAllCaps="true"
+            android:textAppearance="@style/DetailsScreenFontStyle.Title"
+            app:layout_constraintStart_toEndOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quoteTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/black_700"
+            android:lineSpacingExtra="4dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_10dp"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingEnd="@dimen/_10dp"
+            android:paddingBottom="@dimen/_8dp"
+            android:text="I am not in danger, Skyler. I am the danger!"
+            android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
+            app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
+            app:layout_constraintStart_toStartOf="@+id/gdImgStart"
+            app:layout_constraintTop_toBottomOf="@id/quotesTitleTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quoteTV1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/black_700"
+            android:lineSpacingExtra="4dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_10dp"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingEnd="@dimen/_10dp"
+            android:paddingBottom="@dimen/_8dp"
+            android:text="I watched Jane die. I was there. And I watched her die. I watched her overdose and choke to death. I could have saved her. But I didn’t."
+            android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
+            app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
+            app:layout_constraintStart_toStartOf="@+id/gdImgStart"
+            app:layout_constraintTop_toBottomOf="@id/quoteTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quoteTV2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/black_700"
+            android:lineSpacingExtra="4dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_10dp"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingEnd="@dimen/_10dp"
+            android:paddingBottom="@dimen/_8dp"
+            android:text="Chemistry is the study of matter, but I prefer to see it at the study of change."
+            android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
+            app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
+            app:layout_constraintStart_toStartOf="@+id/gdImgStart"
+            app:layout_constraintTop_toBottomOf="@id/quoteTV1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quoteTV3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/black_700"
+            android:lineSpacingExtra="4dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_10dp"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingEnd="@dimen/_10dp"
+            android:paddingBottom="@dimen/_8dp"
+            android:text="You asked me if I was in the meth business or the money business. Neither. I am in the empire business"
+            android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
+            app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
+            app:layout_constraintStart_toStartOf="@+id/gdImgStart"
+            app:layout_constraintTop_toBottomOf="@id/quoteTV2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

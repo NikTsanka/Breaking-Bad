@@ -1,8 +1,11 @@
 package com.ntsan.breakingbad.ui.fragments.cardDetails
 
 import androidx.lifecycle.*
+import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseViewModel
+import com.ntsan.breakingbad.base.DialogData
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.utils.Event
 import com.ntsan.breakingbad.utils.handleNetworkError
@@ -10,7 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CardDetailViewModel(private val data: BreakingBadCharacters) : BaseViewModel() {
+class CardDetailViewModel(
+    private val data: BreakingBadCharacters,
+) : BaseViewModel() {
 
     private val _cardModel = MutableLiveData(data)
     val cardModel: LiveData<BreakingBadCharacters> get() = _cardModel
@@ -81,7 +86,9 @@ class CardDetailViewModel(private val data: BreakingBadCharacters) : BaseViewMod
     }
 
     @Suppress("UNCHECKED_CAST")
-    class CardDetailViewModelFactory(private val data: BreakingBadCharacters) :
+    class CardDetailViewModelFactory(
+        private val data: BreakingBadCharacters
+    ) :
         ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return CardDetailViewModel(data) as T

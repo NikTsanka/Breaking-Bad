@@ -16,6 +16,7 @@
     <color name="black_500">#707070</color>
     <color name="black_200">#A2A2A2</color>
     <color name="black_100">#C6C6C6</color>
+    <color name="grey">#CBCBCB</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_fill_50">#0DFFFFFF</color>
 

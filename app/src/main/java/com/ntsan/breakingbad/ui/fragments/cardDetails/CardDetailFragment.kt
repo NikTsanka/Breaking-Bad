@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
 import com.ntsan.breakingbad.utils.observeEvent
@@ -79,12 +80,19 @@ class CardDetailFragment : BaseFragment() {
             seasonCountTv.text = card.appearance.toString()
                 .substring(1, card.appearance.toString().length - 1)
                 .replace(",", "")
+        }
+    }
 
+    private fun showQuotes(item: BreakingBadQuotes) {
+        binding?.apply {
+            quoteTV.text = item.author
         }
     }
 
     private fun trimFirstWord(s: String): String {
-        return if (s.contains(" ")) s.substring(s.indexOf(' ')).trim { it <= ' ' } else ""
+        return if (s.contains(" "))
+            s.substring(s.indexOf(' '))
+                .trim { it <= ' ' } else ""
     }
 
     private fun getFirstWord(s: String, separator: String): String {

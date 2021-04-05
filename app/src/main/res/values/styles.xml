@@ -59,6 +59,7 @@
         <item name="android:textSize">10sp</item>
     </style>
     <style name="DetailsScreenFontStyle.Content" parent="DetailsScreenFontStyle">
+        <item name="android:textColor">@color/grey</item>
         <item name="fontFamily">@font/gotham_book</item>
         <item name="android:textSize">15sp</item>
     </style>
@@ -66,7 +67,20 @@
         <item name="fontFamily">@font/gotham_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
-
+    <style name="DetailsScreenFontStyle.TitleSaved" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.ContentSaved" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/black_100</item>
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">15sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.QuoteContent" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/grey</item>
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">15sp</item>
+    </style>
     <style name="TextInput" parent="TextAppearance.AppCompat.Body2">
         <item name="android:textColor">@color/black_200</item>
         <item name="fontFamily">@font/gotham_book</item>

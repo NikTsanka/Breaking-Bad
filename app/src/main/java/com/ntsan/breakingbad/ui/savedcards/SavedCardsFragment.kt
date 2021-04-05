@@ -8,14 +8,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.databinding.SavedCardsScreenBinding
 import com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragmentDirections
-import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
-import com.ntsan.breakingbad.utils.BreakingBadCardDecorator
 import com.ntsan.breakingbad.utils.observeEvent
 
 class SavedCardsFragment : BaseFragment() {
@@ -25,9 +23,9 @@ class SavedCardsFragment : BaseFragment() {
 
     override fun getViewModelInstance() = viewModel
 
-    private  var binding: SavedCardsScreenBinding? =null
+    private var binding: SavedCardsScreenBinding? = null
 
-    private var adapter = CardAdapter(){
+    private var adapter = SavedCardAdapter() {
         val action = CardDetailFragmentDirections.actionGlobalCardDetailsFragment(it)
         activity?.findNavController(R.id.mainContainer)?.navigate(action)
     }
@@ -37,29 +35,18 @@ class SavedCardsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = SavedCardsScreenBinding.inflate(inflater, container,false)
-        return  binding?.root
+        binding = SavedCardsScreenBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val layoutManager = GridLayoutManager(context,2)
-        layoutManager.spanSizeLookup = CardAdapter.LoaderSpanSizeLookup(adapter)
         binding?.apply {
-            recyclerView.layoutManager = layoutManager
             recyclerView.adapter = adapter
-            recyclerView.addItemDecoration(
-                BreakingBadCardDecorator(
-                    itemHorizontalInsets = resources.getDimensionPixelSize(R.dimen._16dp),
-                    itemHorizontalSpacing = resources.getDimensionPixelSize(R.dimen._18dp),
-                    itemVerticalInsets = resources.getDimensionPixelSize(R.dimen._0dp),
-                    itemVerticalSpacing = resources.getDimensionPixelSize(R.dimen._4dp)
-                )
-            )
-            swipeToRefresh.setOnRefreshListener {
-                viewModel.requestLogin
-            }
-            viewModel.requestLogin.observeEvent(viewLifecycleOwner){
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.setHasFixedSize(true)
+
+            viewModel.requestLogin.observeEvent(viewLifecycleOwner) {
                 login()
             }
             viewModel.userCards.observe(viewLifecycleOwner) {

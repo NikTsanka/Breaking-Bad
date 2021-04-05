@@ -51,5 +51,7 @@
     <string name="registration_error_empty_name" translatable="false">Empty name</string>
     <string name="registration_error_empty_password" translatable="false">Empty password</string>
     <string name="registration_error_passwords_not_matching" translatable="false">Passwords not matching</string>
+    <string name="by_saved_item_screen">By</string>
+    <string name="quotes">quotes</string>
 
 </resources>

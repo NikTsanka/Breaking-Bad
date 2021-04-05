@@ -31,4 +31,6 @@
     <string name="successfully_registration">რეგისტრაცია წარმატებულია</string>
     <string name="characters_title_home_screen">პერსონაჟები</string>
     <string name="season">Season</string>
+    <string name="by_saved_item_screen">By</string>
+    <string name="quotes">quotes</string>
 </resources>
