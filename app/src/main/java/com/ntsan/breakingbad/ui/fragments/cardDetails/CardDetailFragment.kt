@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -14,6 +15,7 @@ import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
+import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
 import com.ntsan.breakingbad.utils.observeEvent
@@ -42,7 +44,7 @@ class CardDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.cardModel.observe(viewLifecycleOwner) {
-            showCardData(it)
+            lifecycleScope.launchWhenStarted { showCardData(it) }
         }
         binding?.backBtnTv?.setOnClickListener {
             findNavController().popBackStack()
@@ -65,7 +67,7 @@ class CardDetailFragment : BaseFragment() {
         }
     }
 
-    private fun showCardData(card: BreakingBadCharacters) {
+    private suspend fun showCardData(card: BreakingBadCharacters) {
         binding?.apply {
             Glide.with(cardIV)
                 .load(card.img)
@@ -80,12 +82,17 @@ class CardDetailFragment : BaseFragment() {
             seasonCountTv.text = card.appearance.toString()
                 .substring(1, card.appearance.toString().length - 1)
                 .replace(",", "")
+
+            val data = NetworkClient.breakingBadService.getQuotesByName(
+                author = card.name
+            )
+            data.forEach { showQuotes(it) }
         }
     }
 
     private fun showQuotes(item: BreakingBadQuotes) {
         binding?.apply {
-            quoteTV.text = item.author
+            quoteTV.text = item.quote
         }
     }
 

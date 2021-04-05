@@ -460,7 +460,7 @@
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
             app:layout_constraintTop_toBottomOf="@id/quotesTitleTV" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <!--<androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quoteTV1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -518,7 +518,7 @@
             android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
             app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
-            app:layout_constraintTop_toBottomOf="@id/quoteTV2" />
+            app:layout_constraintTop_toBottomOf="@id/quoteTV2" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
