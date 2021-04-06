@@ -273,28 +273,33 @@
             app:layout_constraintStart_toStartOf="@id/gdStart"
             app:layout_constraintTop_toBottomOf="@+id/portrayedTv" />
 
-        <LinearLayout
+        <HorizontalScrollView
             android:id="@+id/linearLayoutRV"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appearanceTv">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/detail_season_item"
-                android:orientation="horizontal"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </HorizontalScrollView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quotesTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_10dp"
             android:padding="2dp"
             android:text="@string/quotes"
             android:textAllCaps="true"

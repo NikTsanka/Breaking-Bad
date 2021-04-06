@@ -1,14 +1,9 @@
 package com.ntsan.breakingbad.ui.fragments.cardDetails
 
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
-import android.transition.TransitionInflater.from
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
-import androidx.appcompat.widget.LinearLayoutCompat.HORIZONTAL
-import androidx.constraintlayout.solver.state.helpers.AlignHorizontallyReference
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
@@ -24,8 +20,8 @@ import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
 import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
-import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
+import com.ntsan.breakingbad.utils.AdapterExample
 import com.ntsan.breakingbad.utils.observeEvent
 
 class CardDetailFragment : BaseFragment() {
@@ -41,7 +37,7 @@ class CardDetailFragment : BaseFragment() {
 
     override fun getViewModelInstance() = viewModel
 
-    private val adapter = CardAdapter() {
+    private val adapter = AdapterExample() {
 
     }
 
@@ -79,31 +75,19 @@ class CardDetailFragment : BaseFragment() {
             if (it) viewModel.determineCardSavedState()
         }
 
-
         binding?.apply {
-            val layoutManager =
-                LinearLayoutManager(context) // TODO: 4/6/2021 OrientationHelper.Horizontal  needed
+            val layoutManager = LinearLayoutManager(context, OrientationHelper.HORIZONTAL, false)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = layoutManager
-            getCharacters()
-        }
-    }
-
-    private fun getCharacters() {
-        lifecycleScope.launchWhenStarted {
-            try {
-                val seasons =
-                    NetworkClient.breakingBadService.getCharacter(limit = 1, offset = 0)
-                adapter.cardList = seasons
-            } catch (e: Exception) {
-
+            viewModel.seasonModel.observe(viewLifecycleOwner) {
+                adapter.cardList = it
             }
         }
     }
 
-    private fun showSeasons(season: BreakingBadCharacters) {
+    private fun showSeasons(item: BreakingBadCharacters) {
         seasonDetail?.apply {
-            seasonCountTv.text = season.appearance.toString()
+            seasonCountTv.text = item.appearance.toString()
         }
     }
 
@@ -119,9 +103,6 @@ class CardDetailFragment : BaseFragment() {
             birthdayContentTv.text = card.birthday
             statusContentTv.text = card.status
             portrayedContentTv.text = card.portrayed
-//            seasonCountTv.text = card.appearance.toString()
-//                .substring(1, card.appearance.toString().length - 1)
-//                .replace(",", "")
 
             val data = NetworkClient.breakingBadService.getQuotesByName(
                 author = card.name
