@@ -14,11 +14,6 @@ interface BreakingBadService {
         @Query("offset") offset: Int
     ): List<BreakingBadCharacters>
 
-    @GET("/api/characters")
-    suspend fun getCharacterAppearance(
-        @Query("appearance") appearance: List<Int>
-    ): List<BreakingBadCharacters>
-
     @GET("/user/braking-bad/get-my-characters")
     suspend fun getUserCards(): List<Int>
 

@@ -1,0 +1,52 @@
+package com.ntsan.breakingbad.ui.fragments.cardDetails
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
+import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
+
+class SeasonAdapter(
+    private val onItemClick: (characterCard: BreakingBadCharacters) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    var seasonList: List<Int> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    private val onClickListener = View.OnClickListener { v ->
+        val card = v?.tag as BreakingBadCharacters
+        onItemClick.invoke(card)
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        AppearanceViewHolder(
+            binding = DetailSeasonItemBinding.inflate(LayoutInflater.from(parent.context)),
+            onClickListener = onClickListener
+        )
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is AppearanceViewHolder -> {
+                val item = seasonList[position]
+                holder.binding.seasonCountTv.text = item.toString()
+            }
+        }
+    }
+
+    override fun getItemCount() = seasonList.size
+
+    class AppearanceViewHolder(
+        val binding: DetailSeasonItemBinding,
+        onClickListener: View.OnClickListener
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener(onClickListener)
+        }
+    }
+}

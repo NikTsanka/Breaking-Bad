@@ -1,8 +1,10 @@
 package com.ntsan.breakingbad.data.models.breakingbad
 
 
+import android.os.Parcelable
 import androidx.annotation.Keep
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
 @Keep
 data class BreakingBadQuotes(

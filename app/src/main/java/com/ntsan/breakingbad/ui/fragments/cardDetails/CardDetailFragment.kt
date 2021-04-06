@@ -21,7 +21,6 @@ import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
 import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
-import com.ntsan.breakingbad.utils.AdapterExample
 import com.ntsan.breakingbad.utils.observeEvent
 
 class CardDetailFragment : BaseFragment() {
@@ -37,9 +36,11 @@ class CardDetailFragment : BaseFragment() {
 
     override fun getViewModelInstance() = viewModel
 
-    private val adapter = AdapterExample() {
-
+    private val adapter = SeasonAdapter() {
     }
+    private val quotesAdapter = QuotesAdapter() {
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,21 +78,25 @@ class CardDetailFragment : BaseFragment() {
 
         binding?.apply {
             val layoutManager = LinearLayoutManager(context, OrientationHelper.HORIZONTAL, false)
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = layoutManager
+            recyclerViewSeason.adapter = adapter
+            recyclerViewSeason.layoutManager = layoutManager
             viewModel.seasonModel.observe(viewLifecycleOwner) {
-                adapter.cardList = it
+                adapter.seasonList = it
+            }
+        }
+        binding?.apply {
+            val layoutManager = LinearLayoutManager(context)
+            recyclerViewQuote.adapter = quotesAdapter
+            recyclerViewQuote.layoutManager = layoutManager
+            viewModel.quoteModel.observe(viewLifecycleOwner) {
+                quotesAdapter.quotesList = it
             }
         }
     }
 
-    private fun showSeasons(item: BreakingBadCharacters) {
-        seasonDetail?.apply {
-            seasonCountTv.text = item.appearance.toString()
-        }
-    }
 
-    private suspend fun showCardData(card: BreakingBadCharacters) {
+
+    private fun showCardData(card: BreakingBadCharacters) {
         binding?.apply {
             Glide.with(cardIV)
                 .load(card.img)
@@ -103,17 +108,6 @@ class CardDetailFragment : BaseFragment() {
             birthdayContentTv.text = card.birthday
             statusContentTv.text = card.status
             portrayedContentTv.text = card.portrayed
-
-            val data = NetworkClient.breakingBadService.getQuotesByName(
-                author = card.name
-            )
-            data.forEach { showQuotes(it) }
-        }
-    }
-
-    private fun showQuotes(item: BreakingBadQuotes) {
-        binding?.apply {
-            quoteTV.text = item.quote
         }
     }
 

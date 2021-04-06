@@ -1,49 +1,49 @@
-package com.ntsan.breakingbad.utils
+package com.ntsan.breakingbad.ui.fragments.cardDetails
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
+import com.ntsan.breakingbad.databinding.DetailQuoteItemBinding
 import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 
-class AdapterExample(
-    private val onItemClick: (characterCard: BreakingBadCharacters) -> Unit
+class QuotesAdapter(
+    private val onItemClick: (quotes: BreakingBadQuotes) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var cardList: List<BreakingBadCharacters> = emptyList()
+    var quotesList: List<BreakingBadQuotes> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     private val onClickListener = View.OnClickListener { v ->
-        val card = v?.tag as BreakingBadCharacters
+        val card = v?.tag as BreakingBadQuotes
         onItemClick.invoke(card)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AppearanceViewHolder(
-            binding = DetailSeasonItemBinding.inflate(LayoutInflater.from(parent.context)),
+            binding = DetailQuoteItemBinding.inflate(LayoutInflater.from(parent.context)),
             onClickListener = onClickListener
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is AppearanceViewHolder -> {
-                val item = cardList[position]
-                holder.binding.seasonCountTv.text = item.appearance.toString()
-                    .substring(1, item.appearance.toString().length - 1)
-                    .replace(",", "")
+                val item = quotesList[position]
+                holder.binding.quoteTV.text = item.quote
             }
         }
     }
 
-    override fun getItemCount() = cardList.size
+    override fun getItemCount() = quotesList.size
 
     class AppearanceViewHolder(
-        val binding: DetailSeasonItemBinding,
+        val binding: DetailQuoteItemBinding,
         onClickListener: View.OnClickListener
     ) :
         RecyclerView.ViewHolder(binding.root) {
