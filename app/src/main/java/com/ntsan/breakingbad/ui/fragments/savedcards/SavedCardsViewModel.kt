@@ -1,4 +1,4 @@
-package com.ntsan.breakingbad.ui.savedcards
+package com.ntsan.breakingbad.ui.fragments.savedcards
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

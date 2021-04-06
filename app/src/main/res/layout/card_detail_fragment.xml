@@ -29,6 +29,7 @@
             android:fontFamily="@font/gotham_bold"
             android:padding="2dp"
             android:text="@string/back_button_text"
+            android:textAllCaps="true"
             android:textColor="@color/black_200"
             app:layout_constraintBottom_toBottomOf="@id/backArrow"
             app:layout_constraintStart_toEndOf="@id/backArrow"

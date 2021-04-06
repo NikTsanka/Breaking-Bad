@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="25dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="24dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_24dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/pilotTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Pilot"
+        android:textAppearance="@style/CharacterTV"
+        app:layout_constraintStart_toEndOf="@id/gdStart"
+        app:layout_constraintTop_toBottomOf="@id/gdTop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="season 1"
+        android:textAppearance="@style/Season.Title"
+        app:layout_constraintEnd_toEndOf="@id/pilotTitleTV"
+        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintStart_toStartOf="@+id/pilotTitleTV"
+        app:layout_constraintTop_toBottomOf="@+id/pilotTitleTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

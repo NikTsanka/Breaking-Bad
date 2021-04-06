@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/savedCardsFragment"
-        android:name="com.ntsan.breakingbad.ui.savedcards.SavedCardsFragment"
+        android:name="com.ntsan.breakingbad.ui.fragments.savedcards.SavedCardsFragment"
         android:label="SavedCardsFragment"
         tools:layout="@layout/saved_cards_screen"/>
 
