@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/seasonOneBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_rectangle_15" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/seasonLogoIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@id/seasonOneBtn"
+        app:layout_constraintStart_toStartOf="@id/seasonOneBtn"
+        app:layout_constraintTop_toTopOf="@id/seasonOneBtn"
+        app:srcCompat="@drawable/breaking_bad_logo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/seasonTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="4dp"
+        android:padding="@dimen/_2dp"
+        android:text="@string/season"
+        android:textAppearance="@style/SeasonText"
+        app:layout_constraintEnd_toEndOf="@+id/seasonLogoIV"
+        app:layout_constraintStart_toStartOf="@+id/seasonLogoIV"
+        app:layout_constraintTop_toBottomOf="@id/seasonLogoIV" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/seasonCountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_2dp"
+        android:textAppearance="@style/SeasonText"
+        app:layout_constraintEnd_toEndOf="@+id/seasonTV"
+        app:layout_constraintStart_toStartOf="@+id/seasonTV"
+        app:layout_constraintTop_toBottomOf="@id/seasonTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

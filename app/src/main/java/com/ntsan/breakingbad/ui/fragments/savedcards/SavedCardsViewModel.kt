@@ -41,51 +41,6 @@ class SavedCardsViewModel : BaseViewModel() {
         getSavedCards()
     }
 
-    /*val userCards: LiveData<List<BreakingBadCharacters>> =
-        Repository.getLocalSavedCardsFlow().map { list ->
-            list.map { id ->
-                var card: BreakingBadCharacters? = null
-                card = Repository.getRemoteCardById(id)
-                if (card == null) {
-                    showLoading()
-                    card = Repository.getRemoteCardById(id)
-                    hideLoading()
-                }
-                card
-            }
-        }.catch { error -> handleNetworkError(error) }
-            .flowOn(Dispatchers.IO)
-            .asLiveData(viewModelScope.coroutineContext)
-
-    init {
-        getSavedCards()
-    }
-
-    fun getSavedCards() = viewModelScope.launch(Dispatchers.IO) {
-        try {
-            if (!Repository.checkSavedIdsValidity()) {
-                showLoading()
-                Repository.updateRemoteSavedCards()
-            }
-        } catch (e: Exception) {
-            handleNetworkError(e)
-        } finally {
-            hideLoading()
-        }
-    }
-
-    fun refresh() = viewModelScope.launch(Dispatchers.IO) {
-        try {
-            showLoading()
-            Repository.updateRemoteSavedCards()
-        } catch (e: Exception) {
-            handleNetworkError(e)
-        } finally {
-            hideLoading()
-        }
-        getSavedCards()
-    }*/
-
     override fun onUnauthorized() {
         _requestLogin.postValue(Event(Unit))
     }

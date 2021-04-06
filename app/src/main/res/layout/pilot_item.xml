@@ -2,14 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gdTop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="25dp"
+        app:layout_constraintGuide_begin="0dp"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,28 +22,75 @@
         app:layout_constraintGuide_begin="@dimen/_24dp"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/pilotTitleTV"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Pilot"
-        android:textAppearance="@style/CharacterTV"
-        app:layout_constraintStart_toEndOf="@id/gdStart"
-        app:layout_constraintTop_toBottomOf="@id/gdTop" />
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_end="@dimen/_30dp" />
+
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cardIV"
+        android:layout_width="180dp"
+        android:layout_height="265dp"
+        android:padding="@dimen/_4dp"
+        android:background="@drawable/character_image"
+        android:layout_marginTop="@dimen/_16dp"
+        app:layout_constraintDimensionRatio="W,265:180"
+        app:layout_constraintStart_toStartOf="@id/gdStart"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/episodesTV"
+        android:id="@+id/nameTV"
+        style="@style/Content.Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="season 1"
-        android:textAppearance="@style/Season.Title"
-        app:layout_constraintEnd_toEndOf="@id/pilotTitleTV"
-        app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toStartOf="@+id/pilotTitleTV"
-        app:layout_constraintTop_toBottomOf="@+id/pilotTitleTV" />
+        android:layout_marginStart="@dimen/_52dp"
+        android:layout_marginTop="22dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_2dp"
+        android:textAppearance="@style/DetailsScreenFontStyle.TitleSaved"
+        app:layout_constraintEnd_toEndOf="@id/gdEnd"
+        app:layout_constraintStart_toEndOf="@+id/cardIV"
+        app:layout_constraintTop_toTopOf="@id/cardIV"
+        tools:text="Walter White" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/nicknameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:textAllCaps="true"
+        android:textAppearance="@style/DetailsScreenFontStyle.TitleSaved"
+        app:layout_constraintEnd_toEndOf="@id/nameTV"
+        app:layout_constraintStart_toStartOf="@id/nameTV"
+        app:layout_constraintTop_toBottomOf="@id/nameTV"
+        tools:text="Heisenberg" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/byTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2dp"
+        android:text="@string/by_saved_item_screen"
+        android:textAppearance="@style/DetailsScreenFontStyle.ContentSaved"
+        app:layout_constraintEnd_toEndOf="@id/nicknameTv"
+        app:layout_constraintStart_toStartOf="@id/nicknameTv"
+        app:layout_constraintTop_toBottomOf="@id/nicknameTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/portrayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2dp"
+        android:textAppearance="@style/DetailsScreenFontStyle.ContentSaved"
+        app:layout_constraintEnd_toEndOf="@id/byTV"
+        app:layout_constraintStart_toStartOf="@id/byTV"
+        app:layout_constraintTop_toBottomOf="@id/byTV"
+        tools:text="Bryan Cranston" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

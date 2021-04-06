@@ -26,5 +26,4 @@ interface SavedCardIdDao {
     @Query("DELETE FROM SavedCardIdEntity")
     fun deleteAll()
 
-
 }

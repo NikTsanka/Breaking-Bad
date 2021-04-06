@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -60,10 +61,33 @@
             app:layout_constraintGuide_begin="@dimen/_24dp"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pilotTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Pilot"
+            android:textAppearance="@style/CharacterTV"
+            app:layout_constraintStart_toEndOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/episodeIV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/episodesTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="season 1"
+            android:textAppearance="@style/Season.Title"
+            app:layout_constraintEnd_toEndOf="@id/pilotTitleTV"
+            app:layout_constraintHorizontal_bias="0.324"
+            app:layout_constraintStart_toStartOf="@+id/pilotTitleTV"
+            app:layout_constraintTop_toBottomOf="@+id/pilotTitleTV" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="242dp"
+            android:layout_marginTop="338dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

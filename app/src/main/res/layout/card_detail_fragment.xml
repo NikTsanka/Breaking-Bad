@@ -273,161 +273,22 @@
             app:layout_constraintStart_toStartOf="@id/gdStart"
             app:layout_constraintTop_toBottomOf="@+id/portrayedTv" />
 
-        <HorizontalScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayoutRV"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/gdStart"
             app:layout_constraintTop_toBottomOf="@+id/appearanceTv">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/seasonOneBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_rectangle_15" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/seasonLogoIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="@id/seasonOneBtn"
-                    app:layout_constraintStart_toStartOf="@id/seasonOneBtn"
-                    app:layout_constraintTop_toTopOf="@id/seasonOneBtn"
-                    app:srcCompat="@drawable/breaking_bad_logo" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/seasonTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="@dimen/_2dp"
-                    android:text="@string/season"
-                    android:textAppearance="@style/SeasonText"
-                    app:layout_constraintEnd_toEndOf="@+id/seasonLogoIV"
-                    app:layout_constraintStart_toStartOf="@+id/seasonLogoIV"
-                    app:layout_constraintTop_toBottomOf="@id/seasonLogoIV" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/seasonCountTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/_2dp"
-                    android:textAppearance="@style/SeasonText"
-                    app:layout_constraintEnd_toEndOf="@+id/seasonTV"
-                    app:layout_constraintStart_toStartOf="@+id/seasonTV"
-                    app:layout_constraintTop_toBottomOf="@id/seasonTV" />
-
-                <!--<androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/seasonTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toEndOf="@id/seasonOne"
-                    app:layout_constraintTop_toTopOf="@id/seasonOne"
-                    app:srcCompat="@drawable/ic_rectangle_15" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/brBaSeasonTwoLogoIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="@id/seasonTwo"
-                    app:layout_constraintStart_toStartOf="@id/seasonTwo"
-                    app:layout_constraintTop_toTopOf="@id/seasonTwo"
-                    app:srcCompat="@drawable/breaking_bad_logo" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/seasonTwoTV"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="@dimen/_2dp"
-                    android:text="Season 2"
-                    android:textAppearance="@style/SeasonText"
-                    app:layout_constraintEnd_toEndOf="@+id/brBaSeasonTwoLogoIV"
-                    app:layout_constraintStart_toStartOf="@+id/brBaSeasonTwoLogoIV"
-                    app:layout_constraintTop_toBottomOf="@id/brBaSeasonTwoLogoIV" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/seasonThree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toEndOf="@id/seasonTwo"
-                    app:layout_constraintTop_toTopOf="@id/seasonTwo"
-                    app:srcCompat="@drawable/ic_rectangle_15" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/brBaSeasonThreeLogoIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="@id/seasonThree"
-                    app:layout_constraintStart_toStartOf="@id/seasonThree"
-                    app:layout_constraintTop_toTopOf="@id/seasonThree"
-                    app:srcCompat="@drawable/breaking_bad_logo" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/seasonThreeTV"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="@dimen/_2dp"
-                    android:text="Season 3"
-                    android:textAppearance="@style/SeasonText"
-                    app:layout_constraintEnd_toEndOf="@+id/brBaSeasonThreeLogoIV"
-                    app:layout_constraintStart_toStartOf="@+id/brBaSeasonThreeLogoIV"
-                    app:layout_constraintTop_toBottomOf="@id/brBaSeasonThreeLogoIV" />
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/seasonFour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toEndOf="@id/seasonThree"
-                    app:layout_constraintTop_toTopOf="@id/seasonThree"
-                    app:srcCompat="@drawable/ic_rectangle_15" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/brBaSeasonFourLogoIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="@id/seasonFour"
-                    app:layout_constraintStart_toStartOf="@id/seasonFour"
-                    app:layout_constraintTop_toTopOf="@id/seasonFour"
-                    app:srcCompat="@drawable/breaking_bad_logo" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/seasonFourTV"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingExtra="4dp"
-                    android:padding="@dimen/_2dp"
-                    android:text="Season 4"
-                    android:textAppearance="@style/SeasonText"
-                    app:layout_constraintEnd_toEndOf="@+id/brBaSeasonFourLogoIV"
-                    app:layout_constraintStart_toStartOf="@+id/brBaSeasonFourLogoIV"
-                    app:layout_constraintTop_toBottomOf="@id/brBaSeasonFourLogoIV" />-->
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </HorizontalScrollView>
+                tools:listitem="@layout/detail_season_item"
+                android:orientation="horizontal"/>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quotesTitleTV"
@@ -439,7 +300,7 @@
             android:textAllCaps="true"
             android:textAppearance="@style/DetailsScreenFontStyle.Title"
             app:layout_constraintStart_toEndOf="@id/gdStart"
-            app:layout_constraintTop_toBottomOf="@id/scrollView" />
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutRV" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quoteTV"
@@ -455,13 +316,15 @@
             android:paddingTop="@dimen/_8dp"
             android:paddingEnd="@dimen/_10dp"
             android:paddingBottom="@dimen/_8dp"
-            android:text="I am not in danger, Skyler. I am the danger!"
+            android:layout_marginBottom="@dimen/_24dp"
+            tools:text="I am not in danger, Skyler. I am the danger!"
             android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
             app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
-            app:layout_constraintTop_toBottomOf="@id/quotesTitleTV" />
+            app:layout_constraintTop_toBottomOf="@id/quotesTitleTV"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <!--<androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quoteTV1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -475,11 +338,12 @@
             android:paddingTop="@dimen/_8dp"
             android:paddingEnd="@dimen/_10dp"
             android:paddingBottom="@dimen/_8dp"
-            android:text="I watched Jane die. I was there. And I watched her die. I watched her overdose and choke to death. I could have saved her. But I didn’t."
+            tools:text="I watched Jane die. I was there. And I watched her die. I watched her overdose and choke to death. I could have saved her. But I didn’t."
             android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
             app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
-            app:layout_constraintTop_toBottomOf="@id/quoteTV" />
+            app:layout_constraintTop_toBottomOf="@id/quoteTV"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quoteTV2"
@@ -495,11 +359,12 @@
             android:paddingTop="@dimen/_8dp"
             android:paddingEnd="@dimen/_10dp"
             android:paddingBottom="@dimen/_8dp"
-            android:text="Chemistry is the study of matter, but I prefer to see it at the study of change."
+            tools:text="Chemistry is the study of matter, but I prefer to see it at the study of change."
             android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
             app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
-            app:layout_constraintTop_toBottomOf="@id/quoteTV1" />
+            app:layout_constraintTop_toBottomOf="@id/quoteTV1"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/quoteTV3"
@@ -515,11 +380,12 @@
             android:paddingTop="@dimen/_8dp"
             android:paddingEnd="@dimen/_10dp"
             android:paddingBottom="@dimen/_8dp"
-            android:text="You asked me if I was in the meth business or the money business. Neither. I am in the empire business"
+            tools:text="You asked me if I was in the meth business or the money business. Neither. I am in the empire business"
             android:textAppearance="@style/DetailsScreenFontStyle.QuoteContent"
             app:layout_constraintEnd_toStartOf="@+id/gdImgEnd"
             app:layout_constraintStart_toStartOf="@+id/gdImgStart"
-            app:layout_constraintTop_toBottomOf="@id/quoteTV2" />-->
+            app:layout_constraintTop_toBottomOf="@id/quoteTV2"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -50,7 +50,7 @@
         android:textAppearance="@style/DetailsScreenFontStyle.TitleSaved"
         app:layout_constraintEnd_toEndOf="@id/gdEnd"
         app:layout_constraintStart_toEndOf="@+id/cardIV"
-        app:layout_constraintTop_toTopOf="@id/gdTop"
+        app:layout_constraintTop_toTopOf="@id/cardIV"
         tools:text="Walter White" />
 
     <androidx.appcompat.widget.AppCompatTextView

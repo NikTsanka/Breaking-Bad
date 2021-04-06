@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,9 +56,11 @@
             android:padding="8dp"
             android:text="1"
             android:textAppearance="@style/CharacterTV"
-            app:layout_constraintBottom_toBottomOf="seasonTitleTV"
-            app:layout_constraintStart_toEndOf="@+id/seasonTitleTV"
-            app:layout_constraintTop_toTopOf="@+id/seasonTitleTV" />
+            app:layout_constraintBottom_toTopOf="@id/gdTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.744"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdTop"

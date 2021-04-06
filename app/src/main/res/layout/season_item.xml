@@ -33,24 +33,23 @@
         android:id="@+id/pilotTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:text="Pilot"
         android:textAppearance="@style/Season.Episode.Title"
-        app:layout_constraintBottom_totopOf="@id/episodesTV"
-        app:layout_constraintStart_toEndOf="@id/episodeIV"
-        app:layout_constraintTop_toTopOf="@id/episodeIV" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.306"
+        app:layout_constraintStart_toEndOf="@+id/episodeIV"
+        app:layout_constraintTop_toTopOf="@+id/episodeIV" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/episodesTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Episodes 1"
         android:textAppearance="@style/Season.Episode.Title2"
-        app:layout_constraintBottom_toBottomOf="@id/episodeIV"
         app:layout_constraintStart_toStartOf="@+id/pilotTV"
-        app:layout_constraintTop_toBottomOf="@+id/pilotTV"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toBottomOf="@+id/pilotTV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,6 @@ open class NetworkErrorHandler(private val uiComponent: UiErrorInterface) {
             }
         }
     }
-
 }
 
 interface UiErrorInterface {
