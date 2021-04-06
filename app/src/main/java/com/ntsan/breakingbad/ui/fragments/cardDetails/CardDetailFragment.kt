@@ -1,5 +1,6 @@
 package com.ntsan.breakingbad.ui.fragments.cardDetails
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,17 +17,13 @@ import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
-import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadQuotes
-import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
-import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
 import com.ntsan.breakingbad.utils.observeEvent
 
 class CardDetailFragment : BaseFragment() {
 
     private var binding: CardDetailFragmentBinding? = null
-    private var seasonDetail: DetailSeasonItemBinding? = null
 
     private val cardDetailArg by navArgs<CardDetailFragmentArgs>()
     private val viewModel by viewModels<CardDetailViewModel> {
@@ -38,9 +35,7 @@ class CardDetailFragment : BaseFragment() {
 
     private val adapter = SeasonAdapter() {
     }
-    private val quotesAdapter = QuotesAdapter() {
-    }
-
+    private val quotesAdapter = QuotesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +46,7 @@ class CardDetailFragment : BaseFragment() {
         return binding?.root
     }
 
+    @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.cardModel.observe(viewLifecycleOwner) {
@@ -75,7 +71,6 @@ class CardDetailFragment : BaseFragment() {
         loginViewModel.loginFlowFinished.observeEvent(viewLifecycleOwner) {
             if (it) viewModel.determineCardSavedState()
         }
-
         binding?.apply {
             val layoutManager = LinearLayoutManager(context, OrientationHelper.HORIZONTAL, false)
             recyclerViewSeason.adapter = adapter
@@ -86,15 +81,13 @@ class CardDetailFragment : BaseFragment() {
         }
         binding?.apply {
             val layoutManager = LinearLayoutManager(context)
-            recyclerViewQuote.adapter = quotesAdapter
-            recyclerViewQuote.layoutManager = layoutManager
+            recyclerViewQuotes.adapter = quotesAdapter
+            recyclerViewQuotes.layoutManager = layoutManager
             viewModel.quoteModel.observe(viewLifecycleOwner) {
                 quotesAdapter.quotesList = it
             }
         }
     }
-
-
 
     private fun showCardData(card: BreakingBadCharacters) {
         binding?.apply {

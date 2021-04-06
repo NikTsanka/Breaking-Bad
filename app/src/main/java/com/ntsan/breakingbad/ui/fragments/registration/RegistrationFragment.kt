@@ -15,6 +15,7 @@ import com.ntsan.breakingbad.base.*
 import com.ntsan.breakingbad.data.models.user.UserRegistration
 import com.ntsan.breakingbad.data.network.NetworkClient
 import com.ntsan.breakingbad.databinding.FragmentRegistrationBinding
+import com.ntsan.breakingbad.utils.observeEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -47,7 +48,7 @@ class RegistrationFragment : BaseFragment() {
             )
         }
         viewModel.validationError.observe(viewLifecycleOwner,this::showValidationError)
-        viewModel.registrationComplete.observe(viewLifecycleOwner){
+        viewModel.registrationComplete.observeEvent(viewLifecycleOwner){
             findNavController().popBackStack(R.id.loginFragment,true)
         }
     }

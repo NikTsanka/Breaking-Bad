@@ -42,4 +42,6 @@
     <dimen name="_64dp">64dp</dimen>
     <dimen name="_72dp">72dp</dimen>
 
+    <dimen name="_372dp">372dp</dimen>
+
 </resources>

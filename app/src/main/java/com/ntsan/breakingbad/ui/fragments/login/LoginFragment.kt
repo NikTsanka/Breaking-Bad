@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.*
 import com.ntsan.breakingbad.databinding.FragmentLoginBinding
 import com.ntsan.breakingbad.ui.fragments.registration.RegistrationFragment
+import com.ntsan.breakingbad.utils.observeEvent
 
 class LoginFragment : BaseFragment(), View.OnClickListener {
 
@@ -22,7 +25,7 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setFragmentResult(KEY_LOGIN_RESULT, bundleOf(KEY_LOGIN_RESULT_SUCCESS to false))
+     //   setFragmentResult(KEY_LOGIN_RESULT, bundleOf(KEY_LOGIN_RESULT_SUCCESS to false))
         setFragmentResultListener(RegistrationFragment.KEY_DATA) { _, bundle ->
             binding?.userNameInput?.setText(bundle.getString(RegistrationFragment.KEY_USERNAME))
         }
@@ -37,15 +40,15 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
         return binding?.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.registrationTvLogScr?.setOnClickListener(this)
         binding?.loginButtonLogScr?.setOnClickListener(this)
+
         viewModel.inputError.observe(viewLifecycleOwner) {
             binding?.passwordInput?.error = getString(it)
         }
-        viewModel.loginSuccess.observe(viewLifecycleOwner) {
+        viewModel.loginSuccess.observeEvent(viewLifecycleOwner) {
             findNavController().popBackStack()
         }
         viewModel.loginFragmentStarted()
@@ -73,10 +76,5 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
 
     private fun startRegistration() {
         findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
-    }
-
-    companion object {
-        const val KEY_LOGIN_RESULT = "key_login_result"
-        const val KEY_LOGIN_RESULT_SUCCESS = "key_login_result_success"
     }
 }

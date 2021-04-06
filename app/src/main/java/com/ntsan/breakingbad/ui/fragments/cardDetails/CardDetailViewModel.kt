@@ -56,11 +56,9 @@ class CardDetailViewModel(
     private fun getQuotes() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-
                 val quotes =
                     NetworkClient.breakingBadService.getQuotesByName("Walter White")
-
-                //quotes.map { q -> q.quote }
+                quotes.map { q -> q.quote }
                 _quoteModel.postValue(quotes)
             } catch (e: Exception) {
                 showDialog(
@@ -71,6 +69,11 @@ class CardDetailViewModel(
                 )
             }
         }
+    }
+
+    private suspend fun getCardName(card: BreakingBadCharacters) {
+        val quotes = NetworkClient.breakingBadService.getQuotesByName(card.name)
+        _quoteModel.postValue(quotes)
     }
 
     fun buttonClicked() {
