@@ -43,12 +43,7 @@ class CardDetailViewModel(
             try {
                 _seasonModel.postValue(data.appearance)
             } catch (e: Exception) {
-                showDialog(
-                    DialogData(
-                        title = R.string.common_error,
-                        message = e.message ?: ""
-                    )
-                )
+                handleNetworkError(e)
             }
         }
     }
@@ -61,19 +56,13 @@ class CardDetailViewModel(
                 quotes.map { q -> q.quote }
                 _quoteModel.postValue(quotes)
             } catch (e: Exception) {
-                showDialog(
-                    DialogData(
-                        title = R.string.common_error,
-                        message = e.message ?: ""
-                    )
-                )
+                handleNetworkError(e)
             }
         }
     }
 
     private suspend fun getCardName(card: BreakingBadCharacters) {
         val quotes = NetworkClient.breakingBadService.getQuotesByName(card.name)
-        _quoteModel.postValue(quotes)
     }
 
     fun buttonClicked() {

@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
+import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadEpisodes
 import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 
 class SeasonAdapter(
-    private val onItemClick: (characterCard: BreakingBadCharacters) -> Unit
+    private val onItemClick: (episodes: BreakingBadEpisodes) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var seasonList: List<Int> = emptyList()
@@ -18,8 +19,8 @@ class SeasonAdapter(
         }
 
     private val onClickListener = View.OnClickListener { v ->
-        val card = v?.tag as BreakingBadCharacters
-        onItemClick.invoke(card)
+        val ep = v?.tag as BreakingBadEpisodes
+        onItemClick.invoke(ep)
     }
 
 
@@ -34,6 +35,7 @@ class SeasonAdapter(
             is AppearanceViewHolder -> {
                 val item = seasonList[position]
                 holder.binding.seasonCountTv.text = item.toString()
+                holder.binding.root.tag = item
             }
         }
     }

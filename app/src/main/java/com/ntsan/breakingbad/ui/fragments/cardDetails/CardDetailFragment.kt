@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,8 @@ import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
+import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragment
+import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragmentDirections
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
 import com.ntsan.breakingbad.utils.observeEvent
 
@@ -26,14 +29,19 @@ class CardDetailFragment : BaseFragment() {
     private var binding: CardDetailFragmentBinding? = null
 
     private val cardDetailArg by navArgs<CardDetailFragmentArgs>()
+
     private val viewModel by viewModels<CardDetailViewModel> {
         CardDetailViewModel.CardDetailViewModelFactory(cardDetailArg.data)
     }
+
     private val loginViewModel by activityViewModels<LoginViewModel>()
 
     override fun getViewModelInstance() = viewModel
 
-    private val adapter = SeasonAdapter() {
+    private val seasonAdapter = SeasonAdapter() {
+        activity?.findNavController(R.id.mainContainer)?.navigate(R.id.episodeFragment)
+        val action = EpisodeFragmentDirections.actionGlobalEpisodeFragment(it)
+        activity?.findNavController(R.id.mainContainer)?.navigate(action)
     }
     private val quotesAdapter = QuotesAdapter()
 
@@ -73,16 +81,18 @@ class CardDetailFragment : BaseFragment() {
         }
         binding?.apply {
             val layoutManager = LinearLayoutManager(context, OrientationHelper.HORIZONTAL, false)
-            recyclerViewSeason.adapter = adapter
+            recyclerViewSeason.adapter = seasonAdapter
             recyclerViewSeason.layoutManager = layoutManager
+
             viewModel.seasonModel.observe(viewLifecycleOwner) {
-                adapter.seasonList = it
+                seasonAdapter.seasonList = it
             }
         }
         binding?.apply {
             val layoutManager = LinearLayoutManager(context)
             recyclerViewQuotes.adapter = quotesAdapter
             recyclerViewQuotes.layoutManager = layoutManager
+
             viewModel.quoteModel.observe(viewLifecycleOwner) {
                 quotesAdapter.quotesList = it
             }
@@ -114,4 +124,5 @@ class CardDetailFragment : BaseFragment() {
         val index = s.indexOf(separator)
         return if (index < 0) s else s.substring(0, index)
     }
+
 }

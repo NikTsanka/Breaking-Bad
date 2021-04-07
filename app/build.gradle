@@ -2,9 +2,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
-  //  id 'kotlin-kapt'
+    //  id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 30

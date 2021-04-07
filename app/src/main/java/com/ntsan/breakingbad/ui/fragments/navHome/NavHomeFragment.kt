@@ -28,6 +28,7 @@ class NavHomeFragment : Fragment(), BottomNavigationView.OnNavigationItemSelecte
         super.onViewCreated(view, savedInstanceState)
         binding?.homeNavTabBar?.setOnNavigationItemSelectedListener(this)
 
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -74,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@id/episodeIV" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/episodesTV"
+            android:id="@+id/seriesTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="season 1"
@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/pilot_item" />
+            tools:listitem="@layout/season_pilot_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
