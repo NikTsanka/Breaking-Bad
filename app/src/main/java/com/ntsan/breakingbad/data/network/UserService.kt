@@ -22,4 +22,16 @@ interface UserService {
         @Header("Content-Type") content_type: String,
         @Body userRegistration: UserRegistration
     )
+
+    @GET("/user/braking-bad/get-my-characters")
+    suspend fun getUserCards(): List<Int>
+
+    @POST("/user/braking-bad/save-character")
+    suspend fun saveUserCards(@Query("characterId") cardId: Int)
+
+    @DELETE("/user/braking-bad/delete-my-character")
+    suspend fun deleteUserCard(@Query("characterId") cardId: Int)
+
+    fun createUser(userRegistration: UserRegistration)
+
 }

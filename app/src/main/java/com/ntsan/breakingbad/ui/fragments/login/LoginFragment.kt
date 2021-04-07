@@ -4,34 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.ntsan.breakingbad.R
-import com.ntsan.breakingbad.base.hideLoading
-import com.ntsan.breakingbad.base.showDialog
-import com.ntsan.breakingbad.base.showLoading
-import com.ntsan.breakingbad.data.network.NetworkClient
-import com.ntsan.breakingbad.data.storage.DataStore
+import com.ntsan.breakingbad.base.*
 import com.ntsan.breakingbad.databinding.FragmentLoginBinding
-import com.ntsan.breakingbad.ui.fragments.profile.ProfileFragment
 import com.ntsan.breakingbad.ui.fragments.registration.RegistrationFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.ntsan.breakingbad.utils.observeEvent
 
-class LoginFragment : Fragment(), View.OnClickListener {
+class LoginFragment : BaseFragment(), View.OnClickListener {
 
     private var binding: FragmentLoginBinding? = null
 
+    private val viewModel: LoginViewModel by activityViewModels()
+
+    override fun getViewModelInstance() = viewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setFragmentResult(KEY_LOGIN_RESULT, bundleOf(KEY_LOGIN_RESULT_SUCCESS to false))
+     //   setFragmentResult(KEY_LOGIN_RESULT, bundleOf(KEY_LOGIN_RESULT_SUCCESS to false))
         setFragmentResultListener(RegistrationFragment.KEY_DATA) { _, bundle ->
             binding?.userNameInput?.setText(bundle.getString(RegistrationFragment.KEY_USERNAME))
         }
@@ -51,67 +45,36 @@ class LoginFragment : Fragment(), View.OnClickListener {
         binding?.registrationTvLogScr?.setOnClickListener(this)
         binding?.loginButtonLogScr?.setOnClickListener(this)
 
+        viewModel.inputError.observe(viewLifecycleOwner) {
+            binding?.passwordInput?.error = getString(it)
+        }
+        viewModel.loginSuccess.observeEvent(viewLifecycleOwner) {
+            findNavController().popBackStack()
+        }
+        viewModel.loginFragmentStarted()
     }
 
     override fun onClick(v: View?) {
+        hideKeyboard()
         when (v) {
             binding?.registrationTvLogScr -> {
                 startRegistration()
             }
             binding?.loginButtonLogScr -> {
-                login()
-            }
-        }
-    }
-
-    private fun login() = lifecycleScope.launchWhenCreated {
-        val username = binding?.userNameInput?.text
-        val password = binding?.passwordInput?.text
-        if (username.isNullOrBlank() || password.isNullOrBlank()) {
-            Toast.makeText(
-                context,
-                getString(R.string.enter_username_or_password),
-                Toast.LENGTH_LONG
-            )
-                .show()
-            return@launchWhenCreated
-        }
-        showLoading()
-        try {
-            val response = withContext(Dispatchers.IO) {
-                NetworkClient.userService.login(
-                    username = username.toString(),
-                    password = password.toString()
+                viewModel.login(
+                    username = binding?.userNameInput?.text,
+                    password = binding?.passwordInput?.text
                 )
             }
-            DataStore.authToken = response.accessToken
-            startProfile()
-            hideLoading()
-        } catch (e: Exception) {
-            showDialog(
-                R.string.common_error,
-                e.message ?: getString(R.string.common_unknown_error)
-            )
-        } finally {
-            hideLoading()
         }
     }
 
-    private fun startProfile() {
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace(R.id.mainContainer, ProfileFragment())
-            NavHostFragment()
-            addToBackStack("Profile")
-        }
+    override fun onDestroy() {
+        viewModel.loginFragmentDestroyed()
+        super.onDestroy()
     }
 
     private fun startRegistration() {
         findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
-    }
-
-    companion object {
-        const val KEY_LOGIN_RESULT = "key_login_result"
-        const val KEY_LOGIN_RESULT_SUCCESS = "key_login_result_success"
     }
 }

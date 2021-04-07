@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="big_button_width">330dp</dimen>
-    <dimen name="short_button_width">300dp</dimen>
+    <dimen name="short_button_width">156dp</dimen>
     <dimen name="button_height">44dp</dimen>
     <dimen name="button_text_size">14sp</dimen>
     <dimen name="vertical_margin">20dp</dimen>
@@ -38,7 +38,10 @@
     <dimen name="_42dp">42dp</dimen>
     <dimen name="_44dp">44dp</dimen>
     <dimen name="_46dp">46dp</dimen>
+    <dimen name="_52dp">52dp</dimen>
     <dimen name="_64dp">64dp</dimen>
     <dimen name="_72dp">72dp</dimen>
+
+    <dimen name="_372dp">372dp</dimen>
 
 </resources>

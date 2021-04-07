@@ -17,20 +17,10 @@
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:enterAnim="@anim/from_bottom"
-            app:exitAnim="@anim/to_top"
-            app:popEnterAnim="@anim/from_top"
-            app:popExitAnim="@anim/to_bottom" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/cardDetailFragment"
-        android:name="com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragment"
-        android:label="CardDetailFragment"
-        tools:layout="@layout/card_detail_fragment">
-        <action
-            android:id="@+id/show_card_details"
-            app:destination="@id/cardDetailFragment"/>
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
 
     <fragment
@@ -41,9 +31,38 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
-            app:enterAnim="@anim/from_top"
-            app:exitAnim="@anim/to_bottom"
-            app:popEnterAnim="@anim/from_bottom"
-            app:popExitAnim="@anim/to_top" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
+
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.ntsan.breakingbad.ui.fragments.cardDetails.CardDetailFragment"
+        android:label="CardDetailFragment"
+        tools:layout="@layout/card_detail_fragment">
+        <argument
+            android:name="data"
+            app:argType="com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters"/>
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_cardDetailsFragment"
+        app:destination="@id/cardDetailFragment" />
+
+    <fragment
+        android:id="@+id/episodeFragment"
+        android:name="com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragment"
+        android:label="EpisodeFragment"
+        tools:layout="@layout/fragment_episode">
+        <argument
+            android:name="data"
+            app:argType="com.ntsan.breakingbad.data.models.breakingbad.BreakingBadEpisodes"/>
+    </fragment>
+    <action
+        android:id="@+id/action_global_episodeFragment"
+        app:destination="@+id/episodeFragment"/>
+
+    <include app:graph="@navigation/home_nav_graph" />
 </navigation>

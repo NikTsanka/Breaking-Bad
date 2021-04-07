@@ -16,7 +16,7 @@
         android:id="@+id/homeNavTabBar"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:background="@color/primaryDarkColor"
+        android:background="@color/black"
         app:itemTextAppearanceActive="@style/Text.Tab.Active"
         app:itemTextAppearanceInactive="@style/Text.Tab.Inactive"
         app:itemIconTint="@color/tab_item_colors"

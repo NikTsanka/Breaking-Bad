@@ -30,4 +30,8 @@
     <string name="enter_username_or_password">შეიყვანეთ მომხმარებლის სახელი და პაროლი</string>
     <string name="successfully_registration">რეგისტრაცია წარმატებულია</string>
     <string name="characters_title_home_screen">პერსონაჟები</string>
+    <string name="season">Season</string>
+    <string name="by_saved_item_screen">By</string>
+    <string name="quotes">quotes</string>
+    <string name="episode_series">Episode</string>
 </resources>

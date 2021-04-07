@@ -11,7 +11,6 @@ import com.ntsan.breakingbad.data.network.NetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.IOException
 
 class HomeViewModel : BaseViewModel() {
 
@@ -21,14 +20,20 @@ class HomeViewModel : BaseViewModel() {
     private val _loadingMore = MutableLiveData(false)
     val loadingMore: LiveData<Boolean> get() = _loadingMore
 
+    val message = MutableLiveData<String>()
+
     private var offset = 0
 
     init {
         loadMoreCard()
     }
 
+    fun onScrollEndReached() {
+        if (loadingMore.value == true) return
+        loadMoreCard()
+    }
+
     fun onRefresh() {
-        offset += 10
         _items.postValue(emptyList())
         loadMoreCard()
     }
@@ -39,21 +44,27 @@ class HomeViewModel : BaseViewModel() {
             try {
                 val data = withContext(Dispatchers.IO) {
                     NetworkClient.breakingBadService.getCharacter(
-                            limit = CARD_SIZE,
-                            offset = offset
+                        limit = CARD_SIZE,
+                        offset = offset
                     )
                 }
                 _items.postValue((_items.value ?: emptyList()) + data)
-
-            } catch (e: IOException) {
-                showDialog(DialogData(title = R.string.common_error, message = e.message ?: ""))
+                offset += 10
+            } catch (e: Exception) {
+                showDialog(
+                    DialogData(
+                        title = R.string.common_error,
+                        message = e.message ?: ""
+                    )
+                )
             } finally {
-               _loadingMore.value = false
+                _loadingMore.value = false
+                if (offset >= 72) {
+                    message.postValue("No more Cards. Please go to Home tab")
+                }
             }
         }
     }
-
-
 
     companion object {
         const val CARD_SIZE = 10

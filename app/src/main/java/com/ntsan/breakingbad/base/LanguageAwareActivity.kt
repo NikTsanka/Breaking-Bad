@@ -16,13 +16,11 @@ abstract class LanguageAwareActivity : AppCompatActivity() {
 
     private lateinit var loadingView: View
     private lateinit var contentView: ContentFrameLayout
-
     private var loading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_BreakingBad)
-
         contentView = findViewById<ContentFrameLayout>(content)
         loadingView = layoutInflater.inflate(R.layout.dialog_loading, contentView, false)
     }
@@ -54,8 +52,8 @@ abstract class LanguageAwareActivity : AppCompatActivity() {
     }
 
     fun hideLoading() {
-        if (loading)return
+        if (!loading) return
         contentView.removeView(loadingView)
-        loading = true
+        loading = false
     }
 }

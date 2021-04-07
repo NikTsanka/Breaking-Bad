@@ -3,7 +3,7 @@
 
     <style name="BigButton" parent="Widget.AppCompat.Button">
         <item name="android:textSize">@dimen/button_text_size</item>
-        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textColor">@color/TextBlack</item>
         <item name="android:fontFamily">@font/gotham_bold</item>
     </style>
 
@@ -11,7 +11,7 @@
         <item name="android:layout_width">@dimen/short_button_width</item>
         <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:textSize">@dimen/button_text_size</item>
-        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="android:textColor">@color/TextBlack</item>
         <item name="android:fontFamily">@font/gotham_bold</item>
     </style>
 
@@ -26,6 +26,24 @@
         <item name="android:textSize">38sp</item>
     </style>
 
+    <style name="Season.Episode.Title" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/grey_200</item>
+        <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Season.Episode.Title2" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/grey_200</item>
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Season.Title" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/grey_200</item>
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="Content.Name" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_bold</item>
@@ -36,6 +54,11 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_bold</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="LanguageBottomSheet" parent="DetailsScreenFontStyle">
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">25sp</item>
     </style>
 
     <style name="DetailsScreenFontStyle" parent="TextAppearance.AppCompat.Body1">
@@ -54,6 +77,7 @@
         <item name="android:textSize">10sp</item>
     </style>
     <style name="DetailsScreenFontStyle.Content" parent="DetailsScreenFontStyle">
+        <item name="android:textColor">@color/grey</item>
         <item name="fontFamily">@font/gotham_book</item>
         <item name="android:textSize">15sp</item>
     </style>
@@ -61,7 +85,20 @@
         <item name="fontFamily">@font/gotham_medium</item>
         <item name="android:textSize">14sp</item>
     </style>
-
+    <style name="DetailsScreenFontStyle.TitleSaved" parent="DetailsScreenFontStyle">
+        <item name="fontFamily">@font/gotham_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.ContentSaved" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/black_100</item>
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">15sp</item>
+    </style>
+    <style name="DetailsScreenFontStyle.QuoteContent" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/grey</item>
+    <item name="fontFamily">@font/gotham_book</item>
+    <item name="android:textSize">15sp</item>
+    </style>
     <style name="TextInput" parent="TextAppearance.AppCompat.Body2">
         <item name="android:textColor">@color/black_200</item>
         <item name="fontFamily">@font/gotham_book</item>
@@ -121,21 +158,28 @@
     </style>
 
     <style name="circleImageView">
-        <item name="android:background">@color/secondaryTextColor</item>
+        <item name="android:background">@color/TextBlack</item>
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
 
     <style name="Text.Tab" parent="TextAppearance.AppCompat.Body1">
         <item name="fontFamily">@font/gotham_bold</item>
-        <item name="android:textSize">8dp</item>
+        <item name="android:textSize">8sp</item>
         <item name="textAllCaps">true</item>
     </style>
     <style name="Text.Tab.Active">
-        <item name="android:textColor">@color/secondaryColor</item>
+        <item name="android:textColor">@color/yellow_800</item>
     </style>
     <style name="Text.Tab.Inactive">
         <item name="android:textColor">@color/black_100</item>
+    </style>
+
+    <style name="SeasonText" parent="TextAppearance.AppCompat.Large">
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_book</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
 </resources>

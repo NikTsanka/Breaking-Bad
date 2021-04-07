@@ -20,6 +20,11 @@
         android:name="com.ntsan.breakingbad.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/savedCardsFragment"
+        android:name="com.ntsan.breakingbad.ui.fragments.savedcards.SavedCardsFragment"
+        android:label="SavedCardsFragment"
+        tools:layout="@layout/saved_cards_screen"/>
 
     <action
         android:id="@+id/show_home"
@@ -32,6 +37,14 @@
     <action
         android:id="@+id/show_search"
         app:destination="@id/searchFragment"
+        app:enterAnim="@anim/from_right"
+        app:exitAnim="@anim/to_left"
+        app:popEnterAnim="@anim/from_left"
+        app:popExitAnim="@anim/to_right"
+        app:popUpTo="@id/home_nav_graph" />
+    <action
+        android:id="@+id/show_saved"
+        app:destination="@id/savedCardsFragment"
         app:enterAnim="@anim/from_right"
         app:exitAnim="@anim/to_left"
         app:popEnterAnim="@anim/from_left"

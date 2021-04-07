@@ -10,7 +10,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object NetworkClient {
 
     val breakingBadService by lazy { createBreakingBadService() }
-
     val userService by lazy { createUserService() }
 
     private const val USER_AUTHENTICATOR_URL = "https://commschool-android-api.herokuapp.com"

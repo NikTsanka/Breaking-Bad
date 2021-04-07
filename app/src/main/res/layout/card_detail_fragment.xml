@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor"
+    android:background="@color/black"
     tools:context=".ui.fragments.cardDetails.CardDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +29,7 @@
             android:fontFamily="@font/gotham_bold"
             android:padding="2dp"
             android:text="@string/back_button_text"
+            android:textAllCaps="true"
             android:textColor="@color/black_200"
             app:layout_constraintBottom_toBottomOf="@id/backArrow"
             app:layout_constraintStart_toEndOf="@id/backArrow"
@@ -66,18 +67,42 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintGuide_end="@dimen/_34dp" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdImgStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdImgEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cardIV"
-            android:layout_width="314dp"
-            android:layout_height="390dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/detail_image_border"
             android:paddingHorizontal="@dimen/_18dp"
             android:paddingVertical="@dimen/_18dp"
             app:layout_constraintDimensionRatio="W,390:314"
-            app:layout_constraintEnd_toEndOf="@id/gdEnd"
-            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintEnd_toEndOf="@id/gdImgEnd"
+            app:layout_constraintStart_toStartOf="@id/gdImgStart"
             app:layout_constraintTop_toTopOf="@id/gdTop" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_18dp"
+            android:paddingVertical="@dimen/_18dp"
+            android:src="@drawable/foreground"
+            app:layout_constraintBottom_toBottomOf="@id/cardIV"
+            app:layout_constraintEnd_toEndOf="@id/cardIV"
+            app:layout_constraintStart_toStartOf="@id/cardIV"
+            app:layout_constraintTop_toTopOf="@id/cardIV" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTv"
@@ -95,6 +120,7 @@
             android:id="@+id/lastNameTv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_16dp"
             android:gravity="center_horizontal"
             android:padding="2dp"
             android:textAppearance="@style/DetailsScreenFontStyle.LastName"
@@ -103,29 +129,47 @@
             app:layout_constraintStart_toStartOf="@id/cardIV"
             tools:text="White" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRemoveBtn"
+            style="@style/ShortButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@drawable/button_background"
+            android:minWidth="156dp"
+            android:text="@string/btn_add"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/cardIV" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nicknameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_64dp"
+            android:layout_marginTop="@dimen/_26dp"
             android:padding="2dp"
             android:textAllCaps="true"
             android:textAppearance="@style/DetailsScreenFontStyle.Title"
             app:layout_constraintStart_toStartOf="@id/gdStart"
-            app:layout_constraintTop_toBottomOf="@id/cardIV"
+            app:layout_constraintTop_toBottomOf="@id/addRemoveBtn"
             tools:text="Heisenberg" />
 
-        <LinearLayout
-            android:id="@+id/occupation"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/occupationTV"
             style="@style/DetailsScreenFontStyle.Details"
-            android:layout_width="0dp"
+            android:layout_width="232dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:lineSpacingExtra="4dp"
             android:orientation="vertical"
             android:paddingStart="@dimen/_16dp"
-            android:paddingEnd="@dimen/_16dp"
-            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            android:paddingTop="@dimen/_2dp"
+            android:paddingEnd="@dimen/_2dp"
+            android:paddingBottom="@dimen/_2dp"
             app:layout_constraintStart_toStartOf="@id/gdStart"
-            app:layout_constraintTop_toBottomOf="@id/nicknameTv" />
+            app:layout_constraintTop_toBottomOf="@id/nicknameTv"
+            tools:text="High School Chemistry Teacher Math King Pin" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/detailsTv"
@@ -133,11 +177,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16dp"
             android:padding="2dp"
-            android:textAllCaps="true"
             android:text="@string/details"
+            android:textAllCaps="true"
             android:textAppearance="@style/DetailsScreenFontStyle.Title"
             app:layout_constraintStart_toStartOf="@id/gdStart"
-            app:layout_constraintTop_toBottomOf="@id/occupation" />
+            app:layout_constraintTop_toBottomOf="@id/occupationTV" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/birthdayTv"
@@ -223,23 +267,61 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16dp"
             android:padding="2dp"
-            android:textAllCaps="true"
             android:text="@string/appearance"
+            android:textAllCaps="true"
             android:textAppearance="@style/DetailsScreenFontStyle.Title"
             app:layout_constraintStart_toStartOf="@id/gdStart"
             app:layout_constraintTop_toBottomOf="@+id/portrayedTv" />
 
-        <HorizontalScrollView
-            android:id="@+id/appearanceHSV"
-            android:layout_width="132dp"
-            android:layout_height="132dp"
-            app:layout_constraintBottom_toBottomOf="@id/gdBottom"
-            app:layout_constraintEnd_toEndOf="@id/gdEnd"
-            app:layout_constraintStart_toStartOf="@id/gdStart"
+        <LinearLayout
+            android:id="@+id/horizontalSeasonSV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appearanceTv">
 
-        </HorizontalScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSeason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/detail_season_item"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/quotesTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:padding="2dp"
+            android:text="@string/quotes"
+            android:textAllCaps="true"
+            android:textAppearance="@style/DetailsScreenFontStyle.Title"
+            app:layout_constraintStart_toEndOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@id/horizontalSeasonSV" />
+
+        <LinearLayout
+            android:id="@+id/horizontalQuotesSV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            app:layout_constraintEnd_toEndOf="@id/gdEnd"
+            app:layout_constraintStart_toStartOf="@id/gdStart"
+            app:layout_constraintTop_toBottomOf="@+id/quotesTitleTV">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewQuotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/detail_quote_item"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

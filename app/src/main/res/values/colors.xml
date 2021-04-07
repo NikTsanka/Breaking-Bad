@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primaryColor">#212121</color>
-    <color name="primaryLightColor">#484848</color>
-    <color name="primaryDarkColor">#000000</color>
-    <color name="secondaryColor">#ffbb3b</color>
-    <color name="secondaryLightColor">#ffed6d</color>
-    <color name="secondaryDarkColor">#c78b00</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="black_800">#212121</color>
+    <color name="black_300">#484848</color>
+    <color name="black">#000000</color>
+    <color name="yellow_800">#ffbb3b</color>
+    <color name="yellow_200">#ffed6d</color>
+    <color name="yellow_900">#c78b00</color>
+    <color name="white_100">#ffffff</color>
+    <color name="TextBlack">#000000</color>
 
     <color name="green">#299800</color>
     <color name="black_900">#1A1A1A</color>
@@ -16,6 +16,9 @@
     <color name="black_500">#707070</color>
     <color name="black_200">#A2A2A2</color>
     <color name="black_100">#C6C6C6</color>
+    <color name="grey">#CBCBCB</color>
+    <color name="grey_200">#5A5A5A</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_fill_50">#0DFFFFFF</color>
 
 </resources>

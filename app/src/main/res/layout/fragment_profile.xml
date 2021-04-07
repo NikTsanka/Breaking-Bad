@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryTextColor">
+    android:background="@color/TextBlack">
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -11,7 +11,8 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="64dp"
-        android:background="@color/secondaryColor"
+        android:src="@drawable/profile_picture"
+        android:background="@color/yellow_800"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:padding="2dp"
-        android:textAllCaps="true"
         android:text="@string/name"
         android:textAppearance="@style/NameTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,12 +118,11 @@
         app:layout_constraintStart_toEndOf="@id/logoutIV"
         app:layout_constraintTop_toTopOf="@id/logoutIV" />
 
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/emailTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="244dp"
         android:layout_marginEnd="8dp"
         android:padding="2dp"
         android:textAllCaps="true"

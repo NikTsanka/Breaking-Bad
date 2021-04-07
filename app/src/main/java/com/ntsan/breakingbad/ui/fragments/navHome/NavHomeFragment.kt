@@ -28,6 +28,7 @@ class NavHomeFragment : Fragment(), BottomNavigationView.OnNavigationItemSelecte
         super.onViewCreated(view, savedInstanceState)
         binding?.homeNavTabBar?.setOnNavigationItemSelectedListener(this)
 
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -41,7 +42,7 @@ class NavHomeFragment : Fragment(), BottomNavigationView.OnNavigationItemSelecte
                 controller.navigate(R.id.show_search)
             }
             R.id.savedItem -> {
-
+                controller.navigate(R.id.show_saved)
             }
             R.id.profile -> {
                 controller.navigate(R.id.show_profile)
