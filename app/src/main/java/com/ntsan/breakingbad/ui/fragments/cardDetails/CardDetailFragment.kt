@@ -19,6 +19,7 @@ import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
+import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragment
 import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragmentDirections
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
@@ -35,7 +36,6 @@ class CardDetailFragment : BaseFragment() {
     }
 
     private val loginViewModel by activityViewModels<LoginViewModel>()
-
     override fun getViewModelInstance() = viewModel
 
     private val seasonAdapter = SeasonAdapter() {

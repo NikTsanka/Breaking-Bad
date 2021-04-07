@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.data.models.user.UserProfile
 import com.ntsan.breakingbad.data.storage.DataStore
+import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
 import com.ntsan.breakingbad.databinding.FragmentProfileBinding
 import com.ntsan.breakingbad.ui.dialogs.LanguagePickerBottomSheet
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
