@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadEpisodes
+import com.ntsan.breakingbad.databinding.BreakingBadItemBinding
 import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
+import com.ntsan.breakingbad.databinding.LoadingItemBinding
+import com.ntsan.breakingbad.ui.fragments.home.CardAdapter
 
 class SeasonAdapter(
     private val onItemClick: (episodes: BreakingBadEpisodes) -> Unit
@@ -19,6 +22,7 @@ class SeasonAdapter(
         }
 
     private val onClickListener = View.OnClickListener { v ->
+        println("test")
         val ep = v?.tag as BreakingBadEpisodes
         onItemClick.invoke(ep)
     }
@@ -27,8 +31,7 @@ class SeasonAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AppearanceViewHolder(
             binding = DetailSeasonItemBinding.inflate(LayoutInflater.from(parent.context)),
-            onClickListener = onClickListener
-        )
+            onClickListener = onClickListener)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {

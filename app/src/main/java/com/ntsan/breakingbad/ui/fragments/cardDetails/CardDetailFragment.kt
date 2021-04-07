@@ -39,7 +39,6 @@ class CardDetailFragment : BaseFragment() {
     override fun getViewModelInstance() = viewModel
 
     private val seasonAdapter = SeasonAdapter() {
-        activity?.findNavController(R.id.mainContainer)?.navigate(R.id.episodeFragment)
         val action = EpisodeFragmentDirections.actionGlobalEpisodeFragment(it)
         activity?.findNavController(R.id.mainContainer)?.navigate(action)
     }
@@ -58,7 +57,10 @@ class CardDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.cardModel.observe(viewLifecycleOwner) {
-            lifecycleScope.launchWhenStarted { showCardData(it) }
+            lifecycleScope.launchWhenStarted {
+                showCardData(it)
+                viewModel.getQuotes(it.name)
+            }
         }
         binding?.backBtnTv?.setOnClickListener {
             findNavController().popBackStack()
@@ -83,7 +85,6 @@ class CardDetailFragment : BaseFragment() {
             val layoutManager = LinearLayoutManager(context, OrientationHelper.HORIZONTAL, false)
             recyclerViewSeason.adapter = seasonAdapter
             recyclerViewSeason.layoutManager = layoutManager
-
             viewModel.seasonModel.observe(viewLifecycleOwner) {
                 seasonAdapter.seasonList = it
             }
@@ -92,7 +93,6 @@ class CardDetailFragment : BaseFragment() {
             val layoutManager = LinearLayoutManager(context)
             recyclerViewQuotes.adapter = quotesAdapter
             recyclerViewQuotes.layoutManager = layoutManager
-
             viewModel.quoteModel.observe(viewLifecycleOwner) {
                 quotesAdapter.quotesList = it
             }
@@ -124,5 +124,4 @@ class CardDetailFragment : BaseFragment() {
         val index = s.indexOf(separator)
         return if (index < 0) s else s.substring(0, index)
     }
-
 }

@@ -35,7 +35,6 @@ class CardDetailViewModel(
     init {
         determineCardSavedState()
         getSeasons()
-        getQuotes()
     }
 
     private fun getSeasons() {
@@ -48,21 +47,17 @@ class CardDetailViewModel(
         }
     }
 
-    private fun getQuotes() {
+     fun getQuotes(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val quotes =
-                    NetworkClient.breakingBadService.getQuotesByName("Walter White")
+                    NetworkClient.breakingBadService.getQuotesByName(name)
                 quotes.map { q -> q.quote }
                 _quoteModel.postValue(quotes)
             } catch (e: Exception) {
                 handleNetworkError(e)
             }
         }
-    }
-
-    private suspend fun getCardName(card: BreakingBadCharacters) {
-        val quotes = NetworkClient.breakingBadService.getQuotesByName(card.name)
     }
 
     fun buttonClicked() {
