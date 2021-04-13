@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -19,8 +18,6 @@ import com.ntsan.breakingbad.R
 import com.ntsan.breakingbad.base.BaseFragment
 import com.ntsan.breakingbad.data.models.breakingbad.BreakingBadCharacters
 import com.ntsan.breakingbad.databinding.CardDetailFragmentBinding
-import com.ntsan.breakingbad.databinding.DetailSeasonItemBinding
-import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragment
 import com.ntsan.breakingbad.ui.fragments.episode.EpisodeFragmentDirections
 import com.ntsan.breakingbad.ui.fragments.login.LoginViewModel
 import com.ntsan.breakingbad.utils.observeEvent
@@ -104,24 +101,13 @@ class CardDetailFragment : BaseFragment() {
             Glide.with(cardIV)
                 .load(card.img)
                 .into(cardIV)
-            nameTv.text = getFirstWord(card.name, " ")
-            lastNameTv.text = trimFirstWord(card.name)
+            nameTv.text = viewModel.getFirstWord(card.name, " ")
+            lastNameTv.text = viewModel.trimFirstWord(card.name)
             nicknameTv.text = card.nickname
             occupationTV.text = card.occupation.joinToString()
             birthdayContentTv.text = card.birthday
             statusContentTv.text = card.status
             portrayedContentTv.text = card.portrayed
         }
-    }
-
-    private fun trimFirstWord(s: String): String {
-        return if (s.contains(" "))
-            s.substring(s.indexOf(' '))
-                .trim { it <= ' ' } else ""
-    }
-
-    private fun getFirstWord(s: String, separator: String): String {
-        val index = s.indexOf(separator)
-        return if (index < 0) s else s.substring(0, index)
     }
 }

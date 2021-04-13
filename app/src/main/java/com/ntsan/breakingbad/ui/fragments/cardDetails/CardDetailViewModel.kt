@@ -78,7 +78,6 @@ class CardDetailViewModel(
         } finally {
             hideLoading()
         }
-
     }
 
     private fun deleteCard() = viewModelScope.launch(Dispatchers.IO) {
@@ -105,6 +104,17 @@ class CardDetailViewModel(
         } finally {
             hideLoading()
         }
+    }
+
+    fun trimFirstWord(s: String): String {
+        return if (s.contains(" "))
+            s.substring(s.indexOf(' '))
+                .trim { it <= ' ' } else ""
+    }
+
+    fun getFirstWord(s: String, separator: String): String {
+        val index = s.indexOf(separator)
+        return if (index < 0) s else s.substring(0, index)
     }
 
     override fun onUnauthorized() {
